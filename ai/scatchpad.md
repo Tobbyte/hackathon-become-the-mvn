@@ -3,7 +3,7 @@
 *for easy merging, please change _only_ your personal section below (create one)
 
 
-## Dev 1 - your name
+## Dev 1 - Jan Brüning
 - write here
 
 
