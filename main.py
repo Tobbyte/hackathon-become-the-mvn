@@ -1,3 +1,4 @@
+"""An interactive, llm based Wikipedia game."""
 # Start screen
 # Show menu with options (Spielregel und Erklärung)
 #
@@ -6,7 +7,12 @@
 #
 
 
-def main():
+def run_game() -> None:
+    """Start the game."""
+
+
+def main() -> None:
+    """Orchestrate initialization, run the game."""
     #show_start_screen() -> None
     #show_menu() -> None
     #wiki_response = call_wiki_api(thema:str)->str
@@ -29,3 +35,11 @@ def main():
 
     #Rules:
     # In branches arbeiten!
+
+    # ____
+    # init if any here
+    run_game()
+
+
+if __name__ == "__main__":
+    main()
