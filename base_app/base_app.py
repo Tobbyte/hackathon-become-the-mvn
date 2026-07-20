@@ -19,6 +19,7 @@
 
 """
 
+from ai.ai import get_initial_clou
 from i_o.io import get_user_input, output, show_menu
 
 
@@ -29,6 +30,7 @@ def run_game() -> None:
     _ = show_menu()  # not used
     choosen_topic = get_user_input("What topic?")
     print(f"dev: user choose {choosen_topic}")
+    print(get_initial_clou())
 
 
 def show_start_screen() -> None:
