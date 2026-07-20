@@ -18,6 +18,9 @@
 
 
 """
+# TODO:
+#   - add animation while waiting for ai response
+
 
 from ai.ai import get_initial_clou
 from i_o.io import get_user_input, output, show_menu
