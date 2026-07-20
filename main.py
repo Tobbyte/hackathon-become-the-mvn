@@ -1,3 +1,7 @@
+"""An interactive, llm based Wikipedia game."""
+
+from base_app.base_app import run_game
+
 # Start screen
 # Show menu with options (Spielregel und Erklärung)
 #
@@ -6,26 +10,19 @@
 #
 
 
-def main():
-    #show_start_screen() -> None
-    #show_menu() -> None
-    #wiki_response = call_wiki_api(thema:str)->str
-    #wiki_response_parsed = parse_api_response(wiki_response:str)->dict
-    #append_conversation_history()->None # as dictionary
-    #persona = construct_persona()->str
-    #llm_response = call_llm(wiki_response_parsed, persona) #Response ohne Bezug auf das Thema
-    #append_conversation_history()->None # as dictionary
-    #While-Loop bis der User richtig erraten oder sein Leben verbraucht hat
-        #user_input = take_user_response()->str
-        #append_conversation_history()->None # as dictionary
-        #response = call_llm(user_input)->str # response ist
-        #append_conversation_history()->None # as dictionary
-    #Endloop
-    #show_result(conversation_history)->str#Dany generate ascii code
-
+def main() -> None:
+    """Orchestrate initialization, run the game."""
     #Rolenaufteilung
     # Wikipedia: Vincent, Jan
     # LLM: Armel, Daniella
 
     #Rules:
     # In branches arbeiten!
+
+    # ____
+    # init if any here
+    run_game()
+
+
+if __name__ == "__main__":
+    main()
