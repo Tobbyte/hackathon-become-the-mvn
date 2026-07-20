@@ -19,6 +19,9 @@
 
 """
 
+# TODO:
+#   - add animation while waiting for ai response
+
 from i_o.io import get_user_input, output, show_menu
 
 
