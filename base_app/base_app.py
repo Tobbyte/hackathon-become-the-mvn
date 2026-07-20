@@ -1,6 +1,5 @@
 """Main Brain of the Game.
 
-
 #show_start_screen() -> None
     #show_menu() -> None
     #wiki_response = call_wiki_api(thema:str)->str
@@ -22,10 +21,11 @@
 
 from i_o.io import output
 
+
 def run_game() -> None:
     """Start the game."""
     print("running")
 
 
 def show_start_screen() -> None:
-    
+    output("Hello User")
