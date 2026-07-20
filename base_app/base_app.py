@@ -19,13 +19,18 @@
 
 """
 
-from i_o.io import output
+from i_o.io import get_user_input, output, show_menu
 
 
 def run_game() -> None:
     """Start the game."""
-    print("running")
+    print("dev: running")
+    show_start_screen()
+    _ = show_menu()  # not used
+    choosen_topic = get_user_input("What topic?")
+    print(f"dev: user choose {choosen_topic}")
 
 
 def show_start_screen() -> None:
-    output("Hello User")
+    """Print a welcome screen."""
+    output("Welcome Screen\n~~Hello User~~")
