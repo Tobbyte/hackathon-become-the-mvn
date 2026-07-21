@@ -28,3 +28,4 @@ def clear_lines(num_lines: int) -> None:
 def clear_screen() -> None:
     """Clear terminal, move cursor top left."""
     print("\033[2J\033[H", end="")
+    print("\n\n\n\n")  ## spacer
