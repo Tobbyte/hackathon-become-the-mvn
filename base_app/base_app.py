@@ -32,8 +32,21 @@ def run_game() -> None:
     print("\n\n\n\n")  ## spacer
     """Start the game."""
     print("dev: running")
-    show_start_screen()
-    _ = show_menu()  # not used
+def _idle_after_input() -> None:
+    """Idle with prompt to continue."""
+    get_user_input("\npress Enter to continue ")
+
+
+def get_dispatch_menu() -> dict:
+    return {
+        1: play_game,
+        2: dummy,
+        0: _quit_program,
+    }
+
+
+def play_game() -> None:
+    print("dev: play_game")
     choosen_topic = get_user_input("What topic?")
     print(f"dev: user choose {choosen_topic}")
     print(get_initial_clou())
