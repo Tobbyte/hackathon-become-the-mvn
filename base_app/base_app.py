@@ -52,6 +52,11 @@ def play_game() -> None:
     print(get_initial_clou())
 
 
-def show_start_screen() -> None:
-    """Print a welcome screen."""
-    show_splashscreen()
+def dummy() -> None:
+    print("dev: I'm a dummy menu item dispatch function")
+
+
+def _quit_program() -> None:
+    """Quit with farewell."""
+    output("Bye!")
+    sys.exit()
