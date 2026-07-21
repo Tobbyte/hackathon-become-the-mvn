@@ -28,12 +28,13 @@ from ai.ai import get_initial_clou
 from base_app.config import MENU_ITEMS
 from i_o.io import (
     clear_screen,
+    get_category_selection,
     get_menu_selection,
     get_user_input,
     output,
 )
 from splash.splash_screen import show_splashscreen
-from wiki_calls.wiki import handle_wikipedia
+from wiki_calls.wiki import get_random_wikipedia_article_data
 
 
 def run_game() -> None:
@@ -79,15 +80,20 @@ def get_dispatch_menu() -> dict:
         0: _quit_program,
     }
 
+    # 1: get_random_wikipedia_article_data,  # random
+    # 2: get_random_wikipedia_article_data,  # 1. get_category_selection -> get_random_wikipedia_article_data(categprie)
+    # 3: get_random_wikipedia_article_data,  # 1. get_difficulty_selection -> get_random_wikipedia_article_data(difficulty)
+
 
 def play_game() -> None:
     print("dev: play_game")
-    choosen_topic = get_user_input("What topic?")
-    print(f"dev: user choose {choosen_topic} - (no effect for now)")
-    print(f"dev: random wiki article:\n{handle_wikipedia()['header']}")
+    choosen_topic = get_category_selection()
+    print(f"dev: user choose {choosen_topic}")
+    print(
+        f"dev: wiki by choosen_topic:\n{get_random_wikipedia_article_data(choosen_topic)['header']}",
+    )
     print("\ndev: get inital clou demo: ~this will take a while, wait~")
     print(f"\ndev: get inital clou demo:\n{get_initial_clou()}")
-    print(f"dev: get inital clou demo:\n{get_initial_clou()}")
 
 
 def dummy() -> None:
