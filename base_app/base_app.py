@@ -22,16 +22,50 @@
 #   - add animation while waiting for ai response
 
 
+import sys
+
 from ai.ai import get_initial_clou
-from i_o.io import clear_screen, get_user_input, output, show_menu
+from base_app.config import MENU_ITEMS
+from i_o.io import (
+    clear_screen,
+    get_menu_selection,
+    get_user_input,
+    output,
+)
 from splash.splash_screen import show_splashscreen
 
 
 def run_game() -> None:
     clear_screen()
-    print("\n\n\n\n")  ## spacer
     """Start the game."""
     print("dev: running")
+    show_splashscreen()
+
+    first_run = True
+
+    while True:
+        if not first_run:
+            clear_screen()
+        first_run = False
+
+        selection = get_menu_selection()
+
+        if not selection:
+            _quit_program()
+
+        else:
+            clear_screen()
+            output(
+                f"~~~~~~~~~~\nSelected menu item: "
+                f"{MENU_ITEMS[selection]}\n"
+                "~~~~~~~~~~\n",
+            )
+
+            get_dispatch_menu()[selection]()
+
+            _idle_after_input()
+
+
 def _idle_after_input() -> None:
     """Idle with prompt to continue."""
     get_user_input("\npress Enter to continue ")
