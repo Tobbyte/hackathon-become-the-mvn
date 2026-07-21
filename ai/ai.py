@@ -1,7 +1,9 @@
 import os
+import random
 
 from dotenv import load_dotenv
 from openai import OpenAI
+from personas.py import PERSONAS
 
 from ai.config import STATIC_GPT_PROMPT
 
@@ -20,7 +22,9 @@ Die Fellzeichnung ist je nach Unterart oft sehr verschieden, aber auch innerhalb
 
 
 def generate_persona():
-    return """Du bist ein betrunkener Pirat in einer Taverne und veranstaltest ein Ratespiel."""
+    random_persona = random.choice(list(PERSONAS.keys()))
+    persona_description = PERSONAS[random_persona]
+    return random_persona, persona_description
 
 
 def get_response(context: str, question: str) -> str:
