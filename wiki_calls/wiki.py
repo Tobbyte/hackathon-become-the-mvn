@@ -5,18 +5,24 @@ import requests
 from wiki_calls.category_lists import categories
 
 
-def get_random_category(
-    options: list = categories,
+def _get_random_category(
+    categories: list,
 ) -> tuple[str, list[str]]:
-    r_category_name, r_category = random.choice(options)
+    r_category_name, r_category = random.choice(categories)
     return r_category_name, r_category
 
 
-def get_random_search_title(r_category: list[str]) -> str:
+def _get_category_list(r_category_name: str) -> list[str]:
+    for category_name, category_list in categories:
+        if category_name == r_category_name:
+            return category_list
+
+
+def _get_random_search_title(r_category: list[str]) -> str:
     return random.choice(r_category)
 
 
-def get_search_parameters(r_search_choice: str) -> dict[str, str | int]:
+def _get_search_parameters(r_search_choice: str) -> dict[str, str | int]:
     search_parameters = {
         "action": "query",  # Fetch data from and about MediaWiki https://en.wikipedia.org/w/api.php?action=help&modules=query
         "titles": r_search_choice,  # exact title search [see "query"]
@@ -31,14 +37,14 @@ def get_search_parameters(r_search_choice: str) -> dict[str, str | int]:
     return search_parameters
 
 
-def get_response_arguments(search_parameters: dict[str, str | int]) -> tuple:
+def _get_response_arguments(search_parameters: dict[str, str | int]) -> tuple:
     wikipedia = "https://en.wikipedia.org/w/api.php"
     params = search_parameters
     header = {"User-Agent": "become_the_mvp_app (become.the.mvp@gmail.com)"}
     return wikipedia, params, header
 
 
-def get_data_from_wikipedia(
+def _get_data_from_wikipedia(
     response_arguments: tuple[str, dict, dict],
 ) -> dict:
     wikipedia, params, header = response_arguments
@@ -51,7 +57,7 @@ def get_data_from_wikipedia(
     return response.json()  # wiki_data
 
 
-def provide_backup_picture() -> tuple[str, tuple[int, int]]:
+def _provide_backup_picture() -> tuple[str, tuple[int, int]]:
     backup_picture = "https://static.wikia.nocookie.net/antagonisten/images/a/ab/Joker-2008-portrait-b.png/revision/latest?cb=20210107165218&path-prefix=de"
     backup_picture_dimensions_wh = (
         610,
@@ -60,8 +66,8 @@ def provide_backup_picture() -> tuple[str, tuple[int, int]]:
     return backup_picture, backup_picture_dimensions_wh
 
 
-def create_data_parts(
-    wiki_data: dict,
+def _create_data_parts(
+    wiki_data: dict, r_category_name: str,
     backup_picture: tuple[str, tuple[int, int]],
 ) -> tuple:
     wiki_article = wiki_data["query"]["pages"][0]
@@ -77,17 +83,18 @@ def create_data_parts(
         picture_dimensions_wh = backup_picture_dimensions_wh
     article_title = wiki_article["title"]
     full_article = wiki_article["extract"].split("\n\n\n== See also")[0]
-    article_header = full_article.split("==")[0]
+    article_header = full_article.split("\n\n")[0]
     return (
         article_picture,
         picture_dimensions_wh,
         article_title,
         full_article,
         article_header,
+        r_category_name,
     )  # return as data_parts
 
 
-def create_article_dict(
+def _create_article_dict(
     data_parts: tuple[str],
 ) -> dict[str, str | tuple[int, int]]:
     (
@@ -96,8 +103,10 @@ def create_article_dict(
         article_title,
         full_article,
         article_header,
+        r_category_name,
     ) = data_parts
     article_dict = {
+        "category": r_category_name,
         "title": article_title,
         "picture_url": article_picture,
         "picture_dimensions": picture_dimensions_wh,
@@ -107,15 +116,20 @@ def create_article_dict(
     return article_dict
 
 
-def handle_wikipedia():
-    r_category_name, r_category = get_random_category()
-    r_search_title = get_random_search_title(r_category)
+def handle_wikipedia(category:str | None = None) -> dict:
+    if category:
+        r_category = _get_category_list(category)
+        r_category_name = category
+    else:
+        r_category_name, r_category = _get_random_category(categories)
 
-    search_parameters = get_search_parameters(r_search_title)
-    response_arguments = get_response_arguments(search_parameters)
-    wiki_data = get_data_from_wikipedia(response_arguments)
+    r_search_title = _get_random_search_title(r_category)
 
-    backup_picture = provide_backup_picture()
-    data_parts = create_data_parts(wiki_data, backup_picture)
-    article_dict = create_article_dict(data_parts)
+    search_parameters = _get_search_parameters(r_search_title)
+    response_arguments = _get_response_arguments(search_parameters)
+    wiki_data = _get_data_from_wikipedia(response_arguments)
+
+    backup_picture = _provide_backup_picture()
+    data_parts = _create_data_parts(wiki_data, r_category_name, backup_picture)
+    article_dict = _create_article_dict(data_parts)
     return article_dict
