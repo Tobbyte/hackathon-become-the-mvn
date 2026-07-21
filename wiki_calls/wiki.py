@@ -2,6 +2,7 @@ import random
 
 import requests
 
+from wiki_calls import pageviews
 from wiki_calls.category_lists import categories
 
 
@@ -126,23 +127,42 @@ def _create_article_dict(
     return article_dict
 
 
-def get_random_wikipedia_article_data(category:str | None = None) -> dict:
-    """Return data for a random Wikipedia article.
-    Select the article from the given category. If no category is provided,
-    select a random category first."""
-    if category:
+def get_random_wikipedia_article_data(
+    category: str | None = None,
+    user_difficulty: str | None = None,
+) -> dict:
+    """Return data for a random Wikipedia article."""
+
+    if user_difficulty:  # Mode: top-pages
+        r_search_title = pageviews.get_top_wikipedia_title(user_difficulty)
+        r_category_name = f"Top pages of the previous month - {user_difficulty}"
+
+    elif category:  # Mode: choose-category
         r_category = _get_category_list(category)
         r_category_name = category
-    else:
-        r_category_name, r_category = _get_random_category(categories)
+        r_search_title = _get_random_search_title(r_category)
 
-    r_search_title = _get_random_search_title(r_category)
+    else:  # Mode: random-category
+        r_category_name, r_category = _get_random_category(categories)
+        r_search_title = _get_random_search_title(r_category)
 
     search_parameters = _get_search_parameters(r_search_title)
     response_arguments = _get_response_arguments(search_parameters)
     wiki_data = _get_data_from_wikipedia(response_arguments)
 
     backup_picture = _provide_backup_picture()
-    data_parts = _create_data_parts(wiki_data, r_category_name, backup_picture)
+    data_parts = _create_data_parts(
+        wiki_data,
+        r_category_name,
+        backup_picture,
+    )
     article_dict = _create_article_dict(data_parts)
+
     return article_dict
+
+# Debugging prints for all possible variants
+# print(get_random_wikipedia_article_data(user_difficulty="easy"))
+# print(get_random_wikipedia_article_data(user_difficulty="medium"))
+# print(get_random_wikipedia_article_data(user_difficulty="hard"))
+# print(get_random_wikipedia_article_data(category="Animals"))
+# print(get_random_wikipedia_article_data())
