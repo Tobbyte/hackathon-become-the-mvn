@@ -22,23 +22,75 @@
 #   - add animation while waiting for ai response
 
 
+import sys
+
 from ai.ai import get_initial_clou
-from i_o.io import clear_screen, get_user_input, output, show_menu
+from base_app.config import MENU_ITEMS
+from i_o.io import (
+    clear_screen,
+    get_menu_selection,
+    get_user_input,
+    output,
+)
 from splash.splash_screen import show_splashscreen
 
 
 def run_game() -> None:
     clear_screen()
-    print("\n\n\n\n")  ## spacer
     """Start the game."""
     print("dev: running")
-    show_start_screen()
-    _ = show_menu()  # not used
+    show_splashscreen()
+
+    first_run = True
+
+    while True:
+        if not first_run:
+            clear_screen()
+        first_run = False
+
+        selection = get_menu_selection()
+
+        if not selection:
+            _quit_program()
+
+        else:
+            clear_screen()
+            output(
+                f"~~~~~~~~~~\nSelected menu item: "
+                f"{MENU_ITEMS[selection]}\n"
+                "~~~~~~~~~~\n",
+            )
+
+            get_dispatch_menu()[selection]()
+
+            _idle_after_input()
+
+
+def _idle_after_input() -> None:
+    """Idle with prompt to continue."""
+    get_user_input("\npress Enter to continue ")
+
+
+def get_dispatch_menu() -> dict:
+    return {
+        1: play_game,
+        2: dummy,
+        0: _quit_program,
+    }
+
+
+def play_game() -> None:
+    print("dev: play_game")
     choosen_topic = get_user_input("What topic?")
     print(f"dev: user choose {choosen_topic}")
     print(get_initial_clou())
 
 
-def show_start_screen() -> None:
-    """Print a welcome screen."""
-    show_splashscreen()
+def dummy() -> None:
+    print("dev: I'm a dummy menu item dispatch function")
+
+
+def _quit_program() -> None:
+    """Quit with farewell."""
+    output("Bye!")
+    sys.exit()
