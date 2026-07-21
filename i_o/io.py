@@ -100,6 +100,42 @@ def get_category_selection() -> str:
     return categories[int(selection) - 1][0]
 
 
+def get_difficulty_selection() -> str:
+    """Print the available categories, asks for input.
+
+    see wiki_calls.category_list
+    """
+    output("")
+    output("Categories:")
+    menu_i = 0
+    for cat in categories:
+        menu_i += 1
+        output(f"{menu_i}: {cat[0]}")
+
+    insist_to_quit = False
+
+    while True:
+        selection = get_user_input(
+            f"\nEnter choice (1-{menu_i}): ",
+        ).strip()
+
+        if selection == "" and insist_to_quit:
+            return None
+        print(selection)
+        if not selection.isdecimal() or not get_category_selection_in_range(
+            selection,
+            menu_i,
+        ):
+            output(
+                f"Invalid input (Enter 0 - {menu_i}. Try again).\n"
+                "Or press ENTER again to quit",
+            )
+            insist_to_quit = True
+        else:
+            break
+    return categories[int(selection) - 1][0]
+
+
 def get_category_selection_in_range(
     selection: str,
     max_range: int,
