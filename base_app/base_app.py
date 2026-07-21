@@ -27,7 +27,7 @@ from ai.ai import ask_llm, generate_persona
 from ai.config import (
     GAME_PERSONA,
     GAME_SYSTEM_KONTEXT,
-    NOTE_QUESTION,
+    HINT_QUESTION,
     WIKI_CONTEXT,
 )
 from base_app.config import MENU_ITEMS
@@ -41,7 +41,7 @@ from i_o.io import (
 from splash.splash_screen import show_splashscreen
 from wiki_calls.wiki import get_random_wikipedia_article_data
 
-game_statistics = {"number_of_tries": 0, "number_of_notes": 0}
+game_statistics = {"number_of_tries": 0, "number_of_hints": 0}
 
 
 def run_game() -> None:
@@ -105,21 +105,20 @@ def _interact_with_user(wiki_article: dict) -> None:
     while True:
         user_input = get_user_input("Rate mal...")
         if user_input.lower() == "help":
-            game_statistics["number_of_notes"] += 1
-            note_response, last_id = ask_llm(
-                persona, WIKI_CONTEXT, NOTE_QUESTION, last_id
+            game_statistics["number_of_hints"] += 1
+            hint_response, last_id = ask_llm(
+                persona, wiki_summary, HINT_QUESTION, last_id
             )
-            print(f"Note response: \n{note_response}")
+            print(f"Hint response: \n{hint_response}\n")
         elif user_input == "exit":
             print(game_statistics)
             break
         else:
+            game_statistics["number_of_tries"] += 1
             context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution=title)
             game_response, last_id = ask_llm(GAME_PERSONA, context, user_input, last_id)
             print("Game response: ", game_response)
-            if game_response != "JA":
-                game_statistics["number_of_tries"] += 1
-            else:
+            if game_response == "JA":
                 print("Congratulations! You win!")
                 print(game_statistics)
                 break

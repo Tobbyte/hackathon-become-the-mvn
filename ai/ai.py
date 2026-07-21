@@ -6,7 +6,7 @@ from openai import OpenAI
 from ai.config import (
     GAME_PERSONA,
     GAME_SYSTEM_KONTEXT,
-    NOTE_QUESTION,
+    HINT_QUESTION,
     WIKI_CONTEXT,
     WIKI_PERSONA,
     WIKI_QUESTION,
@@ -105,5 +105,5 @@ if __name__ == "__main__":
     game_response, last_id = ask_llm(GAME_PERSONA, context, user_question, last_id)
     print("Game response: ", game_response)
 
-    note_response, last_id = ask_llm(WIKI_PERSONA, WIKI_CONTEXT, NOTE_QUESTION, last_id)
-    print(f"Note response: \n{note_response}")
+    Hint_response, last_id = ask_llm(WIKI_PERSONA, WIKI_CONTEXT, HINT_QUESTION, last_id)
+    print(f"Hint response: \n{Hint_response}")
