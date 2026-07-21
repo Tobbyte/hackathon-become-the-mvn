@@ -84,7 +84,7 @@ def play_game() -> None:
     print("dev: play_game")
     choosen_topic = get_user_input("What topic?")
     print(f"dev: user choose {choosen_topic} - (no effect for now)")
-    print(f"dev: random wiki article:\n{handle_wikipedia()['header'][:600]}")
+    print(f"dev: random wiki article:\n{handle_wikipedia()['header']}")
     print("\ndev: get inital clou demo: ~this will take a while, wait~")
     print(f"\ndev: get inital clou demo:\n{get_initial_clou()}")
     print(f"dev: get inital clou demo:\n{get_initial_clou()}")
