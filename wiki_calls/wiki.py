@@ -1,11 +1,12 @@
 import random
 
-import category_lists
 import requests
+
+from wiki_calls.category_lists import categories
 
 
 def get_random_category(
-    options: list = category_lists.categories,
+    options: list = categories,
 ) -> tuple[str, list[str]]:
     r_category_name, r_category = random.choice(options)
     return r_category_name, r_category
@@ -60,7 +61,8 @@ def provide_backup_picture() -> tuple[str, tuple[int, int]]:
 
 
 def create_data_parts(
-    wiki_data: dict, backup_picture: tuple[str, tuple[int, int]]
+    wiki_data: dict,
+    backup_picture: tuple[str, tuple[int, int]],
 ) -> tuple:
     wiki_article = wiki_data["query"]["pages"][0]
     try:
