@@ -23,10 +23,13 @@
 
 
 from ai.ai import get_initial_clou
-from i_o.io import get_user_input, output, show_menu
+from i_o.io import clear_screen, get_user_input, output, show_menu
+from splash.splash_screen import show_splashscreen
 
 
 def run_game() -> None:
+    clear_screen()
+    print("\n\n\n\n")  ## spacer
     """Start the game."""
     print("dev: running")
     show_start_screen()
@@ -38,4 +41,4 @@ def run_game() -> None:
 
 def show_start_screen() -> None:
     """Print a welcome screen."""
-    output("Welcome Screen\n~~Hello User~~")
+    show_splashscreen()
