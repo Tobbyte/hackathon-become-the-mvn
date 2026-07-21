@@ -38,7 +38,8 @@ def get_response(
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content},
         ],
-        reasoning={"effort": "minimal"},
+        reasoning={"effort": "medium"},
+        text={"verbosity": "low"},
         previous_response_id=previous_response_id,
     ) as stream:
         for event in stream:
