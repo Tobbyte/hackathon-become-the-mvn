@@ -29,6 +29,7 @@ from base_app.config import MENU_ITEMS
 from i_o.io import (
     clear_screen,
     get_category_selection,
+    get_difficulty_selection,
     get_menu_selection,
     get_user_input,
     output,
@@ -65,6 +66,9 @@ def run_game() -> None:
 
             wiki_content = get_dispatch_menu()[selection]()
 
+            if not wiki_content:
+                continue
+
             print(
                 f"\ndev: playing with wiki content:\n{wiki_content['header']}",
             )
@@ -88,13 +92,8 @@ def get_dispatch_menu() -> dict:
         1: play_with_random_category,
         2: play_with_category,
         3: play_by_difficulty,
-        4: choose_character,
         0: _quit_program,
     }
-
-def choose_character() -> str:
-    print("noop: choose_character fehlt")
-    return ""
 
 
 def play_with_random_category():
@@ -104,21 +103,19 @@ def play_with_random_category():
 def play_with_category():
     choosen_topic = get_category_selection()
     print(f"dev: user choose {choosen_topic}")
-    return get_random_wikipedia_article_data(choosen_topic)
+    if choosen_topic is not None:
+        return get_random_wikipedia_article_data(choosen_topic)
+    return None
 
 
 def play_by_difficulty():
-    print("noop: play_by_difficulty: difficulty fehlt")
-    return ""
-
-
-# def play_game() -> None:
-#     print("dev: play_game")
-#     print(
-#         f"dev: wiki by choosen_topic:\n{get_random_wikipedia_article_data(choosen_topic)['header']}",
-#     )
-#     print("\ndev: get inital clou demo: ~this will take a while, wait~")
-#     print(f"\ndev: get inital clou demo:\n{get_initial_clou()}")
+    choosen_difficulty = get_difficulty_selection()
+    print(f"dev: user choose {choosen_difficulty}")
+    if choosen_difficulty is not None:
+        return get_random_wikipedia_article_data(
+            user_difficulty=choosen_difficulty,
+        )
+    return None
 
 
 def dummy() -> None:
