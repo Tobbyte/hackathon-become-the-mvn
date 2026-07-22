@@ -78,7 +78,6 @@ def get_menu_selection() -> int | None:
     if sel is not None:
         return int(sel[1])
     return None
-    # return int(selection)
 
 
 def get_category_selection() -> str | None:
@@ -86,7 +85,6 @@ def get_category_selection() -> str | None:
     if sel is not None:
         return sel[0]
     return None
-    # return categories[int(selection) - 1][0]
 
 
 def get_difficulty_selection() -> str | None:
@@ -94,7 +92,6 @@ def get_difficulty_selection() -> str | None:
     if sel is not None:
         return sel[0]
     return None
-    # return DIFFICULTIES_TOP[int(selection) - 1][0]
 
 
 def get_difficulty_selection_in_range(
