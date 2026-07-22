@@ -23,15 +23,8 @@
 
 import sys
 
-from ai.ai import ask_llm, generate_persona
-from ai.config import (
-    GAME_PERSONA,
-    GAME_SYSTEM_KONTEXT,
-    HINT_QUESTION,
-    WIKI_CONTEXT,
-)
 from base_app.config import MENU_ITEMS
-from base_app.life_loop import game_status, is_alive, life_loop
+from base_app.life_loop import game_status, interact_with_user, is_alive, life_loop
 from i_o.io import (
     clear_screen,
     get_category_selection,
@@ -85,7 +78,7 @@ def run_game() -> None:
                 f"dev: wiki by choosen_topic:\n{wiki_content['header']}",
             )
 
-            _interact_with_user(wiki_content)
+            game_statistics = interact_with_user(wiki_content)
 
             _idle_after_input()
 
@@ -124,67 +117,6 @@ def play_by_difficulty():
             user_difficulty=choosen_difficulty,
         )
     return None
-
-
-def _interact_with_user(wiki_article: dict) -> dict:
-    game_statistics = {
-        "tries": 0,
-        "hints": 0,
-        "no": 0,
-        "warm": 0,
-        "hot": 0,
-        "cold": 0,
-        "win": 0,
-        "lives": 3,
-    }
-    title = wiki_article["title"]
-    full_article = wiki_article["full_article"]
-    persona = generate_persona()
-    wiki_summary, last_id = ask_llm(persona, full_article)
-    print(wiki_summary)
-
-    print(f"\ndev: get inital clou demo:\n{wiki_summary}")
-
-    while True:
-        game_status(game_statistics)
-        user_input = ""
-        while True:
-            user_input = get_user_input("Rate mal...")
-            if not user_input:
-                print("Bitte gebe eine Antwort ein!")
-            else:
-                break
-        # Wenn der user nur 1 versuch hat, darf er keine Hilfe mehr holen
-        if user_input.lower() == "hilfe":
-            if game_statistics["lives"] == 1:
-                print("Du hast nicht genug Leben für eine Hilfestellung übrig!")
-                # continue
-            else:
-                hint_response, last_id = ask_llm(
-                    persona, wiki_summary, HINT_QUESTION, last_id
-                )
-                print(f"Hint response: \n{hint_response}\n")
-                game_statistics = life_loop(game_statistics, "Hilfe")
-
-        elif user_input.lower() == "exit":
-            print(game_statistics)
-            break
-        else:
-            context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution=title)
-            game_response, last_id = ask_llm(GAME_PERSONA, context, user_input, last_id)
-            print(f"Game response: {game_response}")
-            print()
-            print()
-            game_statistics = life_loop(game_statistics, game_response)
-            if game_response == "JA":
-                print("Congratulations! You win!")
-                print(game_statistics)
-                break
-            if not is_alive(game_statistics):
-                game_status(game_statistics)
-                break
-
-    return game_statistics
 
 
 def dummy() -> None:
