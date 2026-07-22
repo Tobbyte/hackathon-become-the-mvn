@@ -1,15 +1,16 @@
 import os
 
-from config import (
+from dotenv import load_dotenv
+from openai import OpenAI
+
+from ai.config import (
     GAME_PERSONA,
     GAME_SYSTEM_KONTEXT,
-    NOTE_QUESTION,
+    HINT_QUESTION,
     WIKI_CONTEXT,
     WIKI_PERSONA,
     WIKI_QUESTION,
 )
-from dotenv import load_dotenv
-from openai import OpenAI
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -92,16 +93,17 @@ def parse_response(row_response) -> str:
     return raw_response
 
 
-wiki_summary, last_id = ask_llm(generate_persona())
-print(wiki_summary)
+if __name__ == "__main__":
+    wiki_summary, last_id = ask_llm(generate_persona())
+    print(wiki_summary)
 
-context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution="Leopard")
-user_question = "Bin ich ein Leopard?"  # -> Ja
-# user_question = "Bin ich ein Tier?"  # -> WARM
-# user_question = "Bin ich eine Katze?"  # -> WARM
-# user_question = "Bin ich ein Mensch?"  # -> NEIN
-game_response, last_id = ask_llm(GAME_PERSONA, context, user_question, last_id)
-print("Game response: ", game_response)
+    context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution="Leopard")
+    user_question = "Bin ich ein Leopard?"  # -> Ja
+    # user_question = "Bin ich ein Tier?"  # -> WARM
+    # user_question = "Bin ich eine Katze?"  # -> WARM
+    # user_question = "Bin ich ein Mensch?"  # -> NEIN
+    game_response, last_id = ask_llm(GAME_PERSONA, context, user_question, last_id)
+    print("Game response: ", game_response)
 
-note_response, last_id = ask_llm(WIKI_PERSONA, WIKI_CONTEXT, NOTE_QUESTION, last_id)
-print(f"Note response: \n{note_response}")
+    Hint_response, last_id = ask_llm(WIKI_PERSONA, WIKI_CONTEXT, HINT_QUESTION, last_id)
+    print(f"Hint response: \n{Hint_response}")

@@ -95,7 +95,7 @@ Die Vermutung ist eindeutig falsch oder widerspricht der Zusammenfassung.
 {summary}
 """
 
-NOTE_QUESTION = """
+HINT_QUESTION = """
 Du erhältst einen Text über ein Thema, eine Person, ein Tier, einen Gegenstand oder einen Ort.
 Deine Aufgabe besteht darin, aus einem Informationstext 2 bis 3 Hinweise zu erzeugen.
 
