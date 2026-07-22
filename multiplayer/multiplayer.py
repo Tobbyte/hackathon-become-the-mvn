@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 # from zoneinfo import ZoneInfo
 import random
-import multiplayer_filehandler
+from . import multiplayer_filehandler
 from i_o.io import output
 
 
@@ -37,8 +37,8 @@ def _get_user_score_file(new_user: str) -> dict:
     categories = _get_categories()
     player_scores = {}
     player_scores["player"] = new_user
-    player_scores["created_at"] = _create_timestamp()
-    player_scores["last_updated"] = _create_timestamp()
+    player_scores["created_at"] = create_timestamp()
+    player_scores["last_updated"] = create_timestamp()
     player_scores["personal_records"] = {}
     player_scores["personal_records"]["normal"] = {}
     player_scores["personal_records"]["normal"]["least_attempts"] = {}
@@ -67,7 +67,7 @@ def _get_categories() -> list[str]:
     return categories
 
 
-def _create_timestamp():
+def create_timestamp() -> str:
     return datetime.now().astimezone().isoformat(timespec="seconds")
 
 
@@ -184,7 +184,7 @@ def _print_current_run(run: dict):
 
 
 def _update_last_updated(user_file):
-    user_file["last_updated"] = _create_timestamp()
+    user_file["last_updated"] = create_timestamp()
 
 
 def get_existing_users() -> list[str]:
