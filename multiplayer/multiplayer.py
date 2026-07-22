@@ -1,4 +1,4 @@
-import os.path
+import os
 # import subprocess
 from datetime import datetime
 # from zoneinfo import ZoneInfo
@@ -7,7 +7,7 @@ import multiplayer_filehandler
 from i_o.io import output
 
 
-USER_FILES_FOLDER = os.path.join(
+USER_FILES_FOLDER: str = os.path.join(
     os.path.dirname(__file__),
     "user_files",
 )
@@ -172,7 +172,7 @@ def _announce_record(
     modus: str, record_modus: str, record_version: str, run_profile: dict
 ):
     output(
-        f"NEW PERSONAL {(record_version).upper()} RECORD for the {record_modus} in category: {modus}"
+        f"NEW PERSONAL {record_version.upper()} RECORD for the {record_modus} in category: {modus}"
     )
     _print_current_run(run_profile)
 
@@ -189,7 +189,6 @@ def _update_last_updated(user_file):
 
 def get_existing_users() -> list[str]:
     users = []
-    multiplayer_folder = os.path.dirname(__file__)
 
     for filename in os.listdir(USER_FILES_FOLDER):
         if filename.endswith("_multiplayer.json"):
@@ -205,15 +204,6 @@ def init_user(user_name: str) -> None:
 
 
 def save_run(save_game: tuple[str, str, str, str, int, int, int], user_name: str):
-    (
-        modus,
-        title,
-        timestamp_start,
-        timestamp_end,
-        tries,
-        wrong_answers,
-        help_needed,
-    ) = save_game
     user_filename = os.path.join(
         USER_FILES_FOLDER,
         user_name + "_multiplayer.json",
