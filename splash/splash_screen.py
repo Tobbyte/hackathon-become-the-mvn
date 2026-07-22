@@ -7,12 +7,12 @@ from splash.ascii import PROCEED, SPLASH_MSG
 
 def show_splashscreen() -> None:
     """Draw an ascii art welcome splash."""
-    output(SPLASH_MSG)
+    output(SPLASH_MSG, rainbow=True)
     lines = SPLASH_MSG.count("\n")
 
     welcome = WELCOME_MSG_2 + "\n"
     lines += welcome.count("\n")
-    output(welcome)
+    output(welcome, rainbow=True)
 
     proceed = PROCEED + "\n"
     lines += proceed.count("\n")

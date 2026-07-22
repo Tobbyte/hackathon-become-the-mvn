@@ -1,16 +1,19 @@
 """All things input-output related."""
 
 from base_app.config import GAME_RULES, MENU_ITEMS
-from i_o.colorfull_output import output_rainbow_text
+from i_o.colorfull_output import output_colored_text, output_rainbow_text
 from wiki_calls import category_lists
 from wiki_calls.category_lists import categories
 from wiki_calls.config import DIFFICULTIES_TOP
 
 
-def output(outp: str) -> None:
+def output(outp: str, *, rainbow: bool = False) -> None:
     """Print whats give."""
     # TODO: make pretty
-    print(outp)
+    if rainbow:
+        output_rainbow_text(outp)
+    else:
+        output_colored_text(outp)
 
 
 def get_user_input(prompt: str) -> str:
@@ -61,6 +64,7 @@ def get_menu_selection_multi(menu: tuple[str, list[list]]) -> list | None:
             output(
                 f"Invalid input (Enter 0 - {menu_i}. Try again).\n"
                 "Or press ENTER again to return to main menu",
+                rainbow=True,
             )
             insist_to_quit = True
         else:
@@ -138,4 +142,4 @@ def menu_selection_in_range(
 
 
 def output_howto() -> None:
-    output_rainbow_text(GAME_RULES)
+    output(GAME_RULES, rainbow=True)
