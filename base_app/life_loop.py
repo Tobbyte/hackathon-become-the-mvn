@@ -50,7 +50,7 @@ def interact_with_user(wiki_article: dict) -> dict:
                 output("Du hast nicht genug Leben für eine Hilfestellung übrig!")
                 # continue
             else:
-                output(f"Hint response:\n")
+                output("Hint response:\n")
 
                 hint_response, last_id = ask_llm(
                     persona_description,
@@ -69,6 +69,13 @@ def interact_with_user(wiki_article: dict) -> dict:
                 summary=wiki_summary,
                 solution=title,
                 persona=persona_description,
+            )
+            output("Game response:")
+            game_response, last_id = ask_llm(
+                persona_description,
+                context,
+                user_input,
+                last_id,
             )
             print()
             print()
