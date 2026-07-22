@@ -6,6 +6,17 @@ MENU_ITEMS = [
     ["Exit", "0"],
 ]
 
+
+PLAYER_MENU_ITEMS = [
+    ["play anonym", "anonym"],
+    ["play as user", "user"],
+]
+
+USER_TYPE_MENU_ITEMS = [
+    ["bestehenden user wählen", "existing"],
+    ["neuen user anlegen", "new"],
+]
+
 # ---Spieltexte und Menüpunkte---
 
 TITLE = """
