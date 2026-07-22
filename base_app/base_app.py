@@ -79,8 +79,8 @@ def run_game() -> None:
             )
 
             game_statistics = interact_with_user(wiki_content)
-
-            _idle_after_input()
+            print("Round finished!")
+            print(game_statistics)
 
 
 def _idle_after_input() -> None:

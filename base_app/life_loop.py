@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from ai.ai import ask_llm, generate_persona
 from ai.config import GAME_PERSONA, GAME_SYSTEM_KONTEXT, HINT_QUESTION
 from i_o.io import get_user_input, output
@@ -13,6 +15,8 @@ def interact_with_user(wiki_article: dict) -> dict:
         "cold": 0,
         "win": 0,
         "lives": 3,
+        "start_time": datetime.now(),
+        "end_time": None,
     }
     title = wiki_article["title"]
     full_article = wiki_article["full_article"]
@@ -42,7 +46,7 @@ def interact_with_user(wiki_article: dict) -> dict:
                 game_statistics = life_loop(game_statistics, "Hilfe")
 
         elif user_input.lower() == "exit":
-            output(game_statistics)
+            game_statistics["end_time"] = datetime.now()
             break
         else:
             context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution=title)
@@ -53,10 +57,11 @@ def interact_with_user(wiki_article: dict) -> dict:
             game_statistics = life_loop(game_statistics, game_response)
             if game_response == "JA":
                 output("Congratulations! You win!")
-                output(game_statistics)
+                game_statistics["end_time"] = datetime.now()
                 break
             if not is_alive(game_statistics):
                 game_status(game_statistics)
+                game_statistics["end_time"] = datetime.now()
                 break
 
     return game_statistics
