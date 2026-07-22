@@ -31,9 +31,9 @@ def interact_with_user(wiki_article: dict) -> dict:
     }
     title = wiki_article["title"]
     full_article = wiki_article["full_article"]
-    persona, persona_description = generate_persona()
-    output(PERSONA_TO_ASCII[persona], rainbow=True)
-    wiki_summary, last_id = ask_llm(persona, full_article)
+    persona_name, persona_description = generate_persona()
+    output(PERSONA_TO_ASCII[persona_name], rainbow=True)
+    wiki_summary, last_id = ask_llm(persona_description, full_article)
 
     while True:
         game_status(game_statistics)
@@ -53,7 +53,10 @@ def interact_with_user(wiki_article: dict) -> dict:
                 output(f"Hint response:\n")
 
                 hint_response, last_id = ask_llm(
-                    persona, wiki_summary, HINT_QUESTION, last_id
+                    persona_description,
+                    wiki_summary,
+                    HINT_QUESTION,
+                    last_id,
                 )
                 game_statistics = life_loop(game_statistics, "Hilfe")
 
@@ -62,9 +65,11 @@ def interact_with_user(wiki_article: dict) -> dict:
             game_statistics["timestamp_end"] = create_timestamp()
             break
         else:
-            context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution=title)
-            output(f"Game response:")
-            game_response, last_id = ask_llm(GAME_PERSONA, context, user_input, last_id)
+            context = GAME_SYSTEM_KONTEXT.format(
+                summary=wiki_summary,
+                solution=title,
+                persona=persona_description,
+            )
             print()
             print()
             game_statistics = life_loop(game_statistics, game_response)

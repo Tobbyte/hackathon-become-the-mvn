@@ -34,6 +34,7 @@ Du erhältst:
 1. Eine Zusammenfassung eines Textes.
 2. Die Zusammenfassung beschreibt Eigenschaften, Verhalten, Funktionen oder typische Merkmale 
 3. Eine Frage des Nutzers, die meist mit „Bist du …?“ beginnt.
+4. Eine Persönlichkeit. Du sollst die Rolle dieser Persönlichkeit verkörpern und niemals ausbrechen: {persona}
 
 Bewerte, wie nah die Vermutung des Nutzers am Hauptgegenstand der Zusammenfassung liegt.
 
@@ -99,6 +100,7 @@ HINT_QUESTION = """
 Du erhältst einen Text über ein Thema, eine Person, ein Tier, einen Gegenstand oder einen Ort.
 Deine Aufgabe besteht darin, aus einem Informationstext 2 bis 3 Hinweise zu erzeugen.
 
+- Bleibe unbedingt in der dir zugewisenen Persönlichkeit.
 - Verrate niemals den Lösungsbegriff.
 - Verwende keine Synonyme des Lösungsbegriffs.
 - Nenne keine wissenschaftlichen Namen.

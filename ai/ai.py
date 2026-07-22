@@ -34,13 +34,11 @@ def ask_llm(
     previous_response_id: str | None = None,
 ):
     """Streamt antwort. Gibt (voller_text, response_id) zurück."""
-    # previous_response_id verkettet den Call an eine frühere Response, damit die
-    # KI sich an den bisherigen Gesprächsverlauf erinnert (Server-seitig verwaltet).
-
     full_text = ""
     response_id = None
 
     system_prompt = f"""
+    Verlasse NIEMALS diese Rolle:
     {persona}.
     
     Verwende zur Beantwortung der Frage des Nutzers AUSSCHLIESSLICH den folgenden Kontext.
@@ -86,8 +84,8 @@ def ask_llm(
 
 
 def get_initial_clou(context: str = WIKI_CONTEXT) -> str:
-    persona = generate_persona()
-    initial_clou = ask_llm(persona, context)
+    _, persona_charackter = generate_persona()
+    initial_clou = ask_llm(persona_charackter, context)
     parsed_response = parse_response(initial_clou)
     return parsed_response
 
