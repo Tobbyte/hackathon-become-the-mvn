@@ -105,17 +105,20 @@ def run_game() -> None:
                 #     "tries": 0,
                 #     "wrong_answers": 0,
                 #     "help_needed": 0,
+                #     "exit": True or False
                 # }
 
                 game_statistics["modus"] = modus
 
                 output("Round finished!")
+                is_exit = game_statistics["exit"]
                 game_statistics = convert_to_vincents_unnice_para_requests(
                     game_statistics,
                 )
                 assert user_name  # noqa: S101
 
-                save_run(game_statistics, user_name)
+                if not is_exit:
+                    save_run(game_statistics, user_name)
 
                 play_again = get_ab_choice(
                     "play again? (y)es or (n)o: ",
@@ -167,9 +170,7 @@ def play_by_difficulty():
     choosen_difficulty = get_difficulty_selection()
     if choosen_difficulty is not None:
         output(
-            f"\n~~~~~~~~~~\nSelected difficulty: "
-            f"{choosen_difficulty}\n"
-            "~~~~~~~~~~\n",
+            f"\n~~~~~~~~~~\nSelected difficulty: {choosen_difficulty}\n~~~~~~~~~~\n",
             rainbow=True,
         )
         # return (
