@@ -12,6 +12,7 @@ PERSONA_TO_ASCII = {
     "yoda_persona": yoda_ascii,
 }
 
+
 def interact_with_user(wiki_article: dict) -> dict:
     game_statistics = {
         "tries": 0,
@@ -29,9 +30,9 @@ def interact_with_user(wiki_article: dict) -> dict:
     }
     title = wiki_article["title"]
     full_article = wiki_article["full_article"]
-    persona, persona_name = generate_persona()
+    persona, persona_description = generate_persona()
+    output(PERSONA_TO_ASCII[persona], rainbow=True)
     wiki_summary, last_id = ask_llm(persona, full_article)
-    output(PERSONA_TO_ASCII[persona_name] + "\n" + wiki_summary)
 
     while True:
         game_status(game_statistics)
@@ -48,10 +49,11 @@ def interact_with_user(wiki_article: dict) -> dict:
                 output("Du hast nicht genug Leben für eine Hilfestellung übrig!")
                 # continue
             else:
+                output(f"Hint response:\n")
+
                 hint_response, last_id = ask_llm(
                     persona, wiki_summary, HINT_QUESTION, last_id
                 )
-                output(f"Hint response: \n{hint_response}\n")
                 game_statistics = life_loop(game_statistics, "Hilfe")
 
         elif user_input.lower() == "exit":
@@ -59,8 +61,8 @@ def interact_with_user(wiki_article: dict) -> dict:
             break
         else:
             context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution=title)
+            output(f"Game response:")
             game_response, last_id = ask_llm(GAME_PERSONA, context, user_input, last_id)
-            output(f"Game response: {game_response}")
             print()
             print()
             game_statistics = life_loop(game_statistics, game_response)

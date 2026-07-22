@@ -1,10 +1,8 @@
 import os
 import random
-from random import choice
 
 from dotenv import load_dotenv
 from openai import OpenAI
-from personas.py import PERSONAS
 
 from ai.config import (
     GAME_PERSONA,
@@ -15,6 +13,7 @@ from ai.config import (
     WIKI_QUESTION,
 )
 from ai.personas import PERSONAS
+from i_o.io import output
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -27,7 +26,7 @@ def generate_persona():
     persona_description = PERSONAS[random_persona]
     return random_persona, persona_description
 
-  
+
 def ask_llm(
     persona: str,
     context: str = WIKI_CONTEXT,
@@ -77,7 +76,7 @@ def ask_llm(
     ) as stream:
         for event in stream:
             if event.type == "response.output_text.delta":
-                # print(event.delta, end="", flush=True)
+                print(event.delta, end="", flush=True)
                 full_text += event.delta
             elif event.type == "response.completed":
                 response_id = event.response.id
@@ -99,7 +98,7 @@ def parse_response(row_response) -> str:
 
 
 if __name__ == "__main__":
-    wiki_summary, last_id = ask_llm(generate_persona())
+    wiki_summary, last_id = ask_llm(generate_persona()[0])
     print(wiki_summary)
 
     context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution="Leopard")
