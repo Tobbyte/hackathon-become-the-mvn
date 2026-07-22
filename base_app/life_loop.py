@@ -3,20 +3,23 @@ from datetime import datetime
 from ai.ai import ask_llm, generate_persona
 from ai.config import GAME_PERSONA, GAME_SYSTEM_KONTEXT, HINT_QUESTION
 from i_o.io import get_user_input, output
+from multiplayer.multiplayer import create_timestamp
 
 
 def interact_with_user(wiki_article: dict) -> dict:
     game_statistics = {
         "tries": 0,
-        "hints": 0,
+        "help_needed": 0,
         "no": 0,
         "warm": 0,
         "hot": 0,
         "cold": 0,
         "win": 0,
-        "lives": 3,
-        "start_time": datetime.now(),
-        "end_time": None,
+        "lives": 10,
+        "wrong_answers": 0,
+        "timestamp_start": create_timestamp(),
+        "timestamp_end": None,
+        "title": wiki_article["title"],
     }
     title = wiki_article["title"]
     full_article = wiki_article["full_article"]
@@ -46,7 +49,7 @@ def interact_with_user(wiki_article: dict) -> dict:
                 game_statistics = life_loop(game_statistics, "Hilfe")
 
         elif user_input.lower() == "exit":
-            game_statistics["end_time"] = datetime.now()
+            game_statistics["timestamp_end"] = create_timestamp()
             break
         else:
             context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution=title)
@@ -57,11 +60,11 @@ def interact_with_user(wiki_article: dict) -> dict:
             game_statistics = life_loop(game_statistics, game_response)
             if game_response == "JA":
                 output("Congratulations! You win!")
-                game_statistics["end_time"] = datetime.now()
+                game_statistics["timestamp_end"] = create_timestamp()
                 break
             if not is_alive(game_statistics):
                 game_status(game_statistics)
-                game_statistics["end_time"] = datetime.now()
+                game_statistics["timestamp_end"] = create_timestamp()
                 break
 
     return game_statistics
@@ -88,23 +91,27 @@ def life_loop(game_statistics, ai_input: str) -> dict:
         game_statistics["tries"] += 1
         game_statistics["win"] = 1
     if ai_input == "NEIN":
+        game_statistics["wrong_answers"] += 1
         game_statistics["tries"] += 1
         game_statistics["no"] += 1
         game_statistics["lives"] -= 1
         return game_statistics
     if ai_input == "WARM":
+        game_statistics["wrong_answers"] += 1
         game_statistics["tries"] += 1
         game_statistics["warm"] += 1
         game_statistics["lives"] -= 1
     if ai_input == "SEHR_WARM":
+        game_statistics["wrong_answers"] += 1
         game_statistics["tries"] += 1
         game_statistics["hot"] += 1
     if ai_input == "KALT":
+        game_statistics["wrong_answers"] += 1
         game_statistics["tries"] += 1
         game_statistics["cold"] += 1
         game_statistics["lives"] -= 1
     if ai_input == "Hilfe":
-        game_statistics["hints"] += 1
+        game_statistics["help_needed"] += 1
         game_statistics["lives"] -= 1
 
     return game_statistics

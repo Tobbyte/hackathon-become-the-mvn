@@ -1,12 +1,13 @@
 import os.path
 
+# from zoneinfo import ZoneInfo
+import random
+
 # import subprocess
 from datetime import datetime
 
-# from zoneinfo import ZoneInfo
-import random
-import multiplayer_filehandler
 from i_o.io import output
+from multiplayer.multiplayer_filehandler import load_file, save_file
 
 
 def _ensure_player_file_exists(user_name: str = "Vincent") -> bool:
@@ -15,7 +16,7 @@ def _ensure_player_file_exists(user_name: str = "Vincent") -> bool:
     if existing_player:
         return True
     score_file = _get_user_score_file(user_name)
-    multiplayer_filehandler.save_file(user_filename, score_file)
+    save_file(user_filename, score_file)
 
     return True
 
@@ -30,8 +31,8 @@ def _get_user_score_file(new_user: str) -> dict:
     categories = _get_categories()
     player_scores = {}
     player_scores["player"] = new_user
-    player_scores["created_at"] = _create_timestamp()
-    player_scores["last_updated"] = _create_timestamp()
+    player_scores["created_at"] = create_timestamp()
+    player_scores["last_updated"] = create_timestamp()
     player_scores["personal_records"] = {}
     player_scores["personal_records"]["normal"] = {}
     player_scores["personal_records"]["normal"]["least_attempts"] = {}
@@ -60,7 +61,7 @@ def _get_categories() -> list[str]:
     return categories
 
 
-def _create_timestamp():
+def create_timestamp():
     return datetime.now().astimezone().isoformat(timespec="seconds")
 
 
@@ -177,7 +178,7 @@ def _print_current_run(run: dict):
 
 
 def _update_last_updated(user_file):
-    user_file["last_updated"] = _create_timestamp()
+    user_file["last_updated"] = create_timestamp()
 
 
 def init_user(user_name: str) -> None:
@@ -195,12 +196,12 @@ def save_run(save_game: tuple[str, str, str, str, int, int, int], user_name: str
         help_needed,
     ) = save_game
     user_filename = user_name + "_multiplayer.json"
-    user_file = multiplayer_filehandler.load_file(user_filename)
+    user_file = load_file(user_filename)
     run_profile = _create_run_profile(save_game, user_name)
     _add_run_to_file(user_file, run_profile)
     _update_personal_records(user_file, run_profile)
     _update_last_updated(user_file)
-    multiplayer_filehandler.save_file(user_filename, user_file)
+    save_file(user_filename, user_file)
 
 
 # For development only:

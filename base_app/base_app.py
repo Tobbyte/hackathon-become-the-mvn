@@ -24,7 +24,7 @@
 import sys
 
 from base_app.config import MENU_ITEMS
-from base_app.life_loop import game_status, interact_with_user, is_alive, life_loop
+from base_app.life_loop import interact_with_user
 from i_o.io import (
     clear_screen,
     get_category_selection,
