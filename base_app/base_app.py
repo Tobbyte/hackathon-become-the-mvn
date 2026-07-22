@@ -83,14 +83,10 @@ def run_game() -> None:
                 "\ndev: get inital clou demo: ~this will take a while, wait~",
             )
             print(
-                f"\ndev: get inital clou demo:\n{get_initial_clou(wiki_content['header'])}",
-            )
-            #wiki_article = get_random_wikipedia_article_data(choosen_topic)
-            print(
-                f"dev: wiki by choosen_topic:\n{wiki_article['header']}",
+                f"dev: wiki by choosen_topic:\n{wiki_content['header']}",
             )
 
-            _interact_with_user(wiki_article)
+            _interact_with_user(wiki_content)
 
             _idle_after_input()
 
@@ -130,6 +126,7 @@ def play_by_difficulty():
         )
     return None
 
+
 def _interact_with_user(wiki_article: dict) -> None:
     title = wiki_article["title"]
     full_article = wiki_article["full_article"]
@@ -160,6 +157,7 @@ def _interact_with_user(wiki_article: dict) -> None:
                 print("Congratulations! You win!")
                 print(game_statistics)
                 break
+
 
 def dummy() -> None:
     print("dev: I'm a dummy menu item dispatch function")
