@@ -143,3 +143,19 @@ def menu_selection_in_range(
 
 def output_howto() -> None:
     output(GAME_RULES, rainbow=True)
+
+
+def get_ab_choice(prompt: str, opt_a: list[str], opt_b: list[str]) -> bool:
+    """Ask user to choose between opt_a and opt_b.
+
+    Returns True for opt_a,
+    returns False for opt_b.
+    """
+    while True:
+        user_choice = input(prompt).strip()
+        if user_choice not in opt_a and user_choice not in opt_b:
+            print(f'Choose "{", ".join(opt_a)}" or "{", ".join(opt_b)}": ')
+        else:
+            break
+
+    return user_choice in opt_a

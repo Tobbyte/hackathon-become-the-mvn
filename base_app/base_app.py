@@ -28,6 +28,7 @@ from base_app.life_loop import interact_with_user
 from base_app.player_select import get_user_menu
 from i_o.io import (
     clear_screen,
+    get_ab_choice,
     get_category_selection,
     get_difficulty_selection,
     get_menu_selection,
@@ -35,6 +36,7 @@ from i_o.io import (
     output,
     output_howto,
 )
+from multiplayer.multiplayer import get_existing_users
 from splash.splash_screen import show_splashscreen
 from wiki_calls.wiki import get_random_wikipedia_article_data
 
@@ -50,10 +52,15 @@ def run_game() -> None:
         if not first_run:
             clear_screen()
         first_run = False
-
-        user_name = get_user_menu()
+        known_users = get_existing_users()
+        user_name = get_user_menu(known_users)
         if not user_name:
             _quit_program()
+
+        output(
+            f"~~~~~~~~~~\nHallo {user_name}!\n~~~~~~~~~~\n",
+            rainbow=True,
+        )
 
         selection = get_menu_selection()
         if not selection:
@@ -82,10 +89,19 @@ def run_game() -> None:
             print(
                 f"dev: wiki by choosen_topic:\n{wiki_content['header']}",
             )
+            play_again = True
+            while play_again:
+                game_statistics = interact_with_user(wiki_content)
 
-            game_statistics = interact_with_user(wiki_content)
-            print("Round finished!")
-            print(game_statistics)
+                print("Round finished!")
+                print(game_statistics)
+                play_again = get_ab_choice(
+                    "play again? (y)es or (n)o: ",
+                    ["y", "Y"],
+                    ["n", "N"],
+                )
+
+        _quit_program()
 
 
 def _idle_after_input() -> None:
