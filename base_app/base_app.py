@@ -83,7 +83,7 @@ def run_game() -> None:
                     rainbow=True,
                 )
 
-                wiki_content = get_dispatch_menu()[selection]()
+                wiki_content, modus = get_dispatch_menu()[selection]()
 
                 if not wiki_content:
                     continue
@@ -106,19 +106,17 @@ def run_game() -> None:
                 #     "wrong_answers": 0,
                 #     "help_needed": 0,
                 # }
-                game_statistics["modus"] = "full_random"
-                # modus allowed, muss noc rein:
-                # "full_random"
-                # "category"
-                # "top_easy"
-                # "top_medium"
-                # "top_hard"
+
+                game_statistics["modus"] = modus
+
                 output("Round finished!")
                 game_statistics = convert_to_vincents_unnice_para_requests(
                     game_statistics,
                 )
                 assert user_name  # noqa: S101
+
                 save_run(game_statistics, user_name)
+
                 play_again = get_ab_choice(
                     "play again? (y)es or (n)o: ",
                     ["y", "Y"],
@@ -148,7 +146,8 @@ def show_howto():
 
 
 def play_with_random_category():
-    return get_random_wikipedia_article_data()
+    # return ("get_random_wikipedia_article_data()", "full_random")
+    return (get_random_wikipedia_article_data(), "full_random")
 
 
 def play_with_category():
@@ -158,7 +157,8 @@ def play_with_category():
         rainbow=True,
     )
     if choosen_topic is not None:
-        return get_random_wikipedia_article_data(choosen_topic)
+        # return ("get_random_wikipedia_article_data(choosen_topic)", "category")
+        return (get_random_wikipedia_article_data(choosen_topic), "category")
     return None
 
 
@@ -171,8 +171,15 @@ def play_by_difficulty():
             "~~~~~~~~~~\n",
             rainbow=True,
         )
-        return get_random_wikipedia_article_data(
-            user_difficulty=choosen_difficulty,
+        # return (
+        #     "get_random_wikipedia_article_data(user_difficulty=choosen_difficulty)",
+        #     "top_" + choosen_difficulty,
+        # )
+        return (
+            get_random_wikipedia_article_data(
+                user_difficulty=choosen_difficulty,
+            ),
+            "top_" + choosen_difficulty,
         )
     return None
 
