@@ -139,6 +139,7 @@ def get_dispatch_menu() -> dict:
         2: play_with_random_category,
         3: play_with_category,
         4: play_by_difficulty,
+        5: show_scoreboard,
         0: _quit_program,
     }
 
@@ -147,6 +148,19 @@ def show_howto():
     output_howto()
     _idle_after_input()
     return None, None
+
+
+def show_scoreboard():
+    # scoreboar_data =    <<< Vincent hier von multiplayer daten holen
+    print_scoreboard()
+    _idle_after_input()
+    return None, None
+
+
+def print_scoreboard(scoreboard_data: dict = {}) -> None:
+    output("Hier könnte ihr scoreboard stehen")
+    for k, v in scoreboard_data.items():
+        output(f"{k}: {v}")
 
 
 def play_with_random_category():
