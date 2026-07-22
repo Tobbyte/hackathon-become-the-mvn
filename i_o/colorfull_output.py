@@ -37,7 +37,3 @@ def output_rainbow_text(message: str):
         formatted_text.append("\n")
 
     console.print(formatted_text[:-2])
-
-
-output_rainbow_text(test_message)
-output_colored_text(test_massage_2)
