@@ -43,3 +43,8 @@ conspiracy_theorist_ascii = r"""
          TTTT\_   |    /           |   _/TTTT 
 ---------LLLL---------/------------------JJJJ-------------- -------- ----  ---- ----- --   -
 """
+
+
+anleitung_ascii = r"""
+hier anleitung illu
+"""
