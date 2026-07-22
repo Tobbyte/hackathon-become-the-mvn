@@ -1,15 +1,19 @@
 """All things input-output related."""
 
-from base_app.config import MENU_ITEMS
+from base_app.config import GAME_RULES, MENU_ITEMS
+from i_o.colorfull_output import output_colored_text, output_rainbow_text
 from wiki_calls import category_lists
 from wiki_calls.category_lists import categories
 from wiki_calls.config import DIFFICULTIES_TOP
 
 
-def output(outp: str) -> None:
+def output(outp: str, *, rainbow: bool = False) -> None:
     """Print whats give."""
     # TODO: make pretty
-    print(outp)
+    if rainbow:
+        output_rainbow_text(outp)
+    else:
+        output_colored_text(outp)
 
 
 def get_user_input(prompt: str) -> str:
@@ -30,52 +34,16 @@ def clear_screen() -> None:
     print("\n\n\n\n")  ## spacer
 
 
-def get_menu_selection() -> int | None:
-    """Print the menu to the user, asks for input.
-
-    see base_app.config.MENU_ITEMS
-    Options:
-        0:  Exit
-        1:  tbd
-    """
-    output("")
-
-    output("Menu:")
-    for item in MENU_ITEMS:
-        output(item)
-
-    insist_to_quit = False
-
-    while True:
-        selection = get_user_input(
-            "\nEnter choice (0-11): ",
-        ).strip()
-
-        if selection == "" and insist_to_quit:
-            return None
-        if not selection.isdecimal() or not menu_selection_in_range(selection):
-            output(
-                "Invalid input (Enter 0 - 11. Try again).\n"
-                "Or press ENTER again to quit",
-            )
-            insist_to_quit = True
-        else:
-            break
-
-    return int(selection)
-
-# TODO: die drei hier sind dreckig. menu, category and difficulty
-# selectino sollten eine abstraktion sein
-
-def get_category_selection() -> str:
+def get_menu_selection_multi(menu: tuple[str, list[list]]) -> list | None:
     """Print the available categories, asks for input.
 
     see wiki_calls.category_list
     """
+    menu_name, menu_items = menu
     output("")
-    output("Categories:")
+    output(f"{menu_name}:")
     menu_i = 0
-    for cat in categories:
+    for cat in menu_items:
         menu_i += 1
         output(f"{menu_i}: {cat[0]}")
 
@@ -96,48 +64,34 @@ def get_category_selection() -> str:
             output(
                 f"Invalid input (Enter 0 - {menu_i}. Try again).\n"
                 "Or press ENTER again to return to main menu",
-            )
-            insist_to_quit = True
-        else:
-            break
-    return categories[int(selection) - 1][0]
-
-
-def get_difficulty_selection() -> str:
-    """Print the available categories, asks for input.
-
-    see wiki_calls.category_list
-    """
-    output("")
-    output("Categories:")
-    diff_i = 0
-    for diff in DIFFICULTIES_TOP:
-        diff_i += 1
-        output(f"{diff_i}: {diff[0]}")
-
-    insist_to_quit = False
-
-    while True:
-        selection = get_user_input(
-            f"\nEnter choice (1-{diff_i}): ",
-        ).strip()
-
-        if selection == "" and insist_to_quit:
-            return None
-
-        if not selection.isdecimal() or not get_difficulty_selection_in_range(
-            selection,
-            diff_i,
-        ):
-            output(
-                f"Invalid input (Enter 0 - {diff_i}. Try again).\n"
-                "Or press ENTER again to return to main menu",
+                rainbow=True,
             )
             insist_to_quit = True
         else:
             break
 
-    return DIFFICULTIES_TOP[int(selection) - 1][0]
+    return menu_items[int(selection) - 1]
+
+
+def get_menu_selection() -> int | None:
+    sel = get_menu_selection_multi(("Hauptmenü", MENU_ITEMS))
+    if sel is not None:
+        return int(sel[1])
+    return None
+
+
+def get_category_selection() -> str | None:
+    sel = get_menu_selection_multi(("Kategorien", categories))
+    if sel is not None:
+        return sel[0]
+    return None
+
+
+def get_difficulty_selection() -> str | None:
+    sel = get_menu_selection_multi(("Schwierigkeit", DIFFICULTIES_TOP))
+    if sel is not None:
+        return sel[0]
+    return None
 
 
 def get_difficulty_selection_in_range(
@@ -182,3 +136,7 @@ def menu_selection_in_range(
         return False
     else:
         return min_range <= int(selection) <= max_range
+
+
+def output_howto() -> None:
+    output(GAME_RULES, rainbow=True)

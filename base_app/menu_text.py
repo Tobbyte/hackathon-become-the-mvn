@@ -1,18 +1,9 @@
-MENU_ITEMS = [
-    ["howto", "1"],
-    ["random", "2"],
-    ["by category", "3"],
-    ["by difficulty", "4"],
-    ["Exit", "0"],
-]
+#---Spieltexte und Menüpunkte---
 
-# ---Spieltexte und Menüpunkte---
-
-TITLE = """
-Willkommen zu Most Value Nerd, ein interaktives Wikipedia-Spiel!
+titeltext = """
+Willkommen zu Most Value Nerd ein interaktives Wikipedia-Spiel!
 """
-
-WELCOME_MSG_1 = """
+begruessungtext_1 = """
 Bist du bereit?
 Ein unvergessliches Abenteuer wartet auf dich!
 Prüfe dein Wissen und werde der 'Most Value Nerd'!
@@ -20,15 +11,26 @@ Vorsicht extreme Suchtgefahr!
 Bei Nebenwirkungen Fragen Sie ihren Programmierer.
 """
 
-WELCOME_MSG_2 = """
+begruessungtext_2 = """
 Begib dich auf die Reise durch die Unendliche Datenbank des Wikipedia, 
 in der jeder Artikel ein neues Puzzleteil des Menschlichen Fortschritts ist.
 Nur die besten werden es schaffen und erhalten den Titel: Most Value Nerd!
 Bist du bereit?
 """
+#menuepunkte
+
+menuepunkt_1 = """
+0: Programm beenden
+1: Mit zufälliger Kategorie spielen
+2: Mit Kategorie spielen
+3: Nach Schwierigkeitsgrad spielen
+
+Navigerung:
+Auswahl über Eingabe der Nummern, bestätigen mit Enter.
+"""
 
 
-GAME_RULES = """
+Spielregeln = """
 
 1. Spielvorbereitung & Modus
 
@@ -54,7 +56,7 @@ Ausschlussverfahren & Lebenspunkte
 
 Der Spieler startet mit 10 Leben (Versuchen).
 
-Der Spieler tastet sich mithilfe von bin ich ...Fragen heran, die vom System ausschließlich mit      Ja, Nein, Warm, Kalt beantwortet werden.
+Der Spieler tastet sich mithilfe von bin ich ...Fragen heran, die vom System ausschließlich mit Ja, Nein, Warm, Kalt beantwortet werden.
 
 Ja-Antworten: Der Versuch war erfolgreich. Die Anzahl der verbleibenden Leben bleibt unverändert.
 
