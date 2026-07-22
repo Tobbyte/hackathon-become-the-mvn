@@ -8,13 +8,19 @@ from wiki_calls.category_lists import categories
 from wiki_calls.config import DIFFICULTIES_TOP
 
 
-def output(outp: str, *, rainbow: bool = False) -> None:
+def output(
+    outp: str,
+    end="\n",
+    flush=False,
+    *,
+    rainbow: bool = False,
+) -> None:
     """Print whats give."""
     # TODO: make pretty
     if rainbow:
         output_rainbow_text(outp)
     else:
-        output_colored_text(outp)
+        output_colored_text(outp, end=end, flush=flush)
 
 
 def get_user_input(prompt: str) -> str:
