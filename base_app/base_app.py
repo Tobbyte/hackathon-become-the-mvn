@@ -68,6 +68,7 @@ def run_game() -> None:
                 f"~~~~~~~~~~\nSelected menu item: "
                 f"{MENU_ITEMS[selection - 1][0]}\n"
                 "~~~~~~~~~~\n",
+                rainbow=True,
             )
 
             wiki_content = get_dispatch_menu()[selection]()
@@ -118,6 +119,7 @@ def play_with_category():
     choosen_topic = get_category_selection()
     output(
         f"\n~~~~~~~~~~\nSelected category: {choosen_topic}\n~~~~~~~~~~\n",
+        rainbow=True,
     )
     if choosen_topic is not None:
         return get_random_wikipedia_article_data(choosen_topic)
@@ -131,6 +133,7 @@ def play_by_difficulty():
             f"\n~~~~~~~~~~\nSelected difficulty: "
             f"{choosen_difficulty}\n"
             "~~~~~~~~~~\n",
+            rainbow=True,
         )
         return get_random_wikipedia_article_data(
             user_difficulty=choosen_difficulty,
