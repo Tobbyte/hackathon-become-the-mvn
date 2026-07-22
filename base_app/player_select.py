@@ -50,7 +50,7 @@ def _get_new_username(known_users: list) -> str | None:
 
 
 def get_user_menu(
-    user_list: list = ["Dörte", "Pen15", "ers0r"],
+    user_list: list,
 ) -> str | None:
     """Choose user name from existing, new or anonym.
 
@@ -64,16 +64,15 @@ def get_user_menu(
 
     user_type = _get_user_type_selection()
     if user_type is None:
-        get_user_menu(user_list)
+        return get_user_menu(user_list)
 
     if user_type == "existing":
         if user_type is None:
-            get_user_menu(user_list)
-        else:
-            existing_user_name = _get_existing_user_selection(user_list)
-            if existing_user_name is None:
-                get_user_menu(user_list)
-            return existing_user_name
+            return get_user_menu(user_list)
+        existing_user_name = _get_existing_user_selection(user_list)
+        if existing_user_name is None:
+            return get_user_menu(user_list)
+        return existing_user_name
 
     if user_type == "new":
         return _get_new_username(user_list)
