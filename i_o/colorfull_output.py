@@ -1,6 +1,7 @@
-from ascii_art import *  # Import the ASCII art from a separate file
 from rich.console import Console
 from rich.text import Text
+
+from i_o.ascii_art import *  # Import the ASCII art from a separate file
 
 test_message = pirat_ascii  # Replace with your desired message
 test_massage_2 = """lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."""
