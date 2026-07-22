@@ -143,6 +143,7 @@ def get_dispatch_menu() -> dict:
 def show_howto():
     output_howto()
     _idle_after_input()
+    return None, None
 
 
 def play_with_random_category():
