@@ -38,6 +38,7 @@ from i_o.io import (
     get_menu_selection,
     get_user_input,
     output,
+    output_howto,
 )
 from splash.splash_screen import show_splashscreen
 from wiki_calls.wiki import get_random_wikipedia_article_data
@@ -98,11 +99,17 @@ def _idle_after_input() -> None:
 
 def get_dispatch_menu() -> dict:
     return {
-        1: play_with_random_category,
-        2: play_with_category,
-        3: play_by_difficulty,
+        1: show_howto,
+        2: play_with_random_category,
+        3: play_with_category,
+        4: play_by_difficulty,
         0: _quit_program,
     }
+
+
+def show_howto():
+    output_howto()
+    _idle_after_input()
 
 
 def play_with_random_category():
