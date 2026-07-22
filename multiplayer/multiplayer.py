@@ -145,7 +145,6 @@ def _update_personal_records(
             "normal",
             run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
-        print()
 
     if (
         r_n_fastest[modus] is None
@@ -158,7 +157,6 @@ def _update_personal_records(
             "normal",
             run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
-        print()
 
     if (
         r_i_least[modus] is None or r_i_least[modus]["tries"] > run_profile["tries"]
@@ -170,7 +168,6 @@ def _update_personal_records(
             "ironman",
             run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
-        print()
 
     if (
         r_i_fastest[modus] is None
@@ -183,7 +180,6 @@ def _update_personal_records(
             "ironman",
             run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
-        print()
 
 
 def _announce_record(
