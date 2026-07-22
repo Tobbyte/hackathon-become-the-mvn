@@ -226,6 +226,18 @@ def init_user(user_name: str) -> None:
     _ensure_player_file_exists(user_name)
 
 
+def convert_to_vincents_unnice_para_requests(dictus):
+    return (
+        dictus["modus"],
+        dictus["title"],
+        dictus["timestamp_start"],
+        dictus["timestamp_end"],
+        dictus["tries"],
+        dictus["wrong_answers"],
+        dictus["help_needed"],
+    )
+
+
 def save_run(save_game: tuple[str, str, str, str, int, int, int], user_name: str):
     user_filename = os.path.join(
         USER_FILES_FOLDER,
