@@ -49,7 +49,6 @@ game_statistics = {"number_of_tries": 0, "number_of_hints": 0}
 def run_game() -> None:
     clear_screen()
     """Start the game."""
-    print("dev: running")
     show_splashscreen()
 
     first_run = True
@@ -172,10 +171,6 @@ def _interact_with_user(wiki_article: dict) -> None:
                 print("Congratulations! You win!")
                 print(game_statistics)
                 break
-
-
-def dummy() -> None:
-    print("dev: I'm a dummy menu item dispatch function")
 
 
 def _quit_program() -> None:
