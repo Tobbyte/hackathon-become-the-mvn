@@ -31,7 +31,7 @@ def interact_with_user(wiki_article: dict) -> dict:
         game_status(game_statistics)
         user_input = ""
         while True:
-            user_input = get_user_input("Rate mal...")
+            user_input = get_user_input("Rate mal... (exit | hilfe)")
             if not user_input:
                 output("Bitte gebe eine Antwort ein!")
             else:
