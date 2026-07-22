@@ -1,16 +1,23 @@
 import os.path
-
 # import subprocess
 from datetime import datetime
-
 # from zoneinfo import ZoneInfo
 import random
 import multiplayer_filehandler
 from i_o.io import output
 
 
-def _ensure_player_file_exists(user_name: str = "Vincent") -> bool:
-    user_filename = user_name + "_multiplayer.json"
+USER_FILES_FOLDER = os.path.join(
+    os.path.dirname(__file__),
+    "user_files",
+)
+
+
+def _ensure_player_file_exists(user_name: str) -> bool:
+    user_filename = os.path.join(
+        USER_FILES_FOLDER,
+        user_name + "_multiplayer.json",
+    )
     existing_player = _check_player_exists(user_filename)
     if existing_player:
         return True
@@ -67,7 +74,7 @@ def _create_timestamp():
 def _create_run_profile(save_game: tuple, user_name: str) -> dict:
     (
         modus,
-        titel,
+        title,
         timestamp_start,
         timestamp_end,
         tries,
@@ -82,7 +89,7 @@ def _create_run_profile(save_game: tuple, user_name: str) -> dict:
     file_keys = [
         "user_name",
         "modus",
-        "titel",
+        "title",
         "timestamp_start",
         "duration_seconds",
         "tries",
@@ -93,7 +100,7 @@ def _create_run_profile(save_game: tuple, user_name: str) -> dict:
     file_values = [
         user_name,
         modus,
-        titel,
+        title,
         timestamp_start,
         duration_seconds,
         tries,
@@ -172,12 +179,25 @@ def _announce_record(
 
 def _print_current_run(run: dict):
     output(
-        f"title: {run['titel']} - Category: {run['modus']}, tries: {run['tries']}, wrong answers: {run['wrong_answers']}, seconds: {run['duration_seconds']}, help needed: {run['help_needed']}"
+        f"title: {run['title']} - Category: {run['modus']}, tries: {run['tries']}, wrong answers: {run['wrong_answers']}, seconds: {run['duration_seconds']}, help needed: {run['help_needed']}"
     )  # Platzhalter print
 
 
 def _update_last_updated(user_file):
     user_file["last_updated"] = _create_timestamp()
+
+
+def get_existing_users() -> list[str]:
+    users = []
+    multiplayer_folder = os.path.dirname(__file__)
+
+    for filename in os.listdir(USER_FILES_FOLDER):
+        if filename.endswith("_multiplayer.json"):
+            user_name = filename.removesuffix("_multiplayer.json")
+            users.append(user_name)
+
+    users.sort()
+    return users
 
 
 def init_user(user_name: str) -> None:
@@ -187,14 +207,17 @@ def init_user(user_name: str) -> None:
 def save_run(save_game: tuple[str, str, str, str, int, int, int], user_name: str):
     (
         modus,
-        titel,
+        title,
         timestamp_start,
         timestamp_end,
         tries,
         wrong_answers,
         help_needed,
     ) = save_game
-    user_filename = user_name + "_multiplayer.json"
+    user_filename = os.path.join(
+        USER_FILES_FOLDER,
+        user_name + "_multiplayer.json",
+    )
     user_file = multiplayer_filehandler.load_file(user_filename)
     run_profile = _create_run_profile(save_game, user_name)
     _add_run_to_file(user_file, run_profile)
@@ -232,7 +255,7 @@ def _random_run_generator() -> tuple[
     ]
 
     modus = random.choice(game_modes)
-    titel = random.choice(titles)
+    title = random.choice(titles)
 
     timestamp_end = datetime.now().astimezone()
 
@@ -249,7 +272,7 @@ def _random_run_generator() -> tuple[
 
     return (
         modus,
-        titel,
+        title,
         timestamp_start.isoformat(timespec="seconds"),
         timestamp_end.isoformat(timespec="seconds"),
         tries,
