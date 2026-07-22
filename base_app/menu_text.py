@@ -26,7 +26,8 @@ menuepunkt_1 = """
 3: Nach Schwierigkeitsgrad spielen
 
 Navigerung:
-Auswahl über Eingabe der Nummern, bestätigen mit Enter.
+Auswahl über Eingabe der Nummern oder den entsprechenden Befehl,
+ bestätigung durch Enter.
 """
 
 

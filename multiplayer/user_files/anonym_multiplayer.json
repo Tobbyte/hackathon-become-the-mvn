@@ -1,0 +1,75 @@
+{
+    "player": "anonym",
+    "created_at": "2026-07-22T20:22:56+02:00",
+    "last_updated": "2026-07-22T22:28:05+02:00",
+    "personal_records": {
+        "normal": {
+            "least_attempts": {
+                "full_random": null,
+                "category": {
+                    "user_name": "anonym",
+                    "modus": "category",
+                    "title": "Fight Club",
+                    "timestamp_start": "2026-07-22T22:25:49+02:00",
+                    "duration_seconds": 136,
+                    "tries": 3,
+                    "wrong_answers": 2,
+                    "help_needed": 1
+                },
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": null
+            },
+            "fastest": {
+                "full_random": null,
+                "category": {
+                    "user_name": "anonym",
+                    "modus": "category",
+                    "title": "Fight Club",
+                    "timestamp_start": "2026-07-22T22:25:49+02:00",
+                    "duration_seconds": 136,
+                    "tries": 3,
+                    "wrong_answers": 2,
+                    "help_needed": 1
+                },
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": null
+            }
+        },
+        "ironman": {
+            "least_attempts": {
+                "full_random": null,
+                "category": null,
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": null
+            },
+            "fastest": {
+                "full_random": null,
+                "category": null,
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": null
+            }
+        }
+    },
+    "runs": {
+        "full_random": [],
+        "category": [
+            {
+                "user_name": "anonym",
+                "modus": "category",
+                "title": "Fight Club",
+                "timestamp_start": "2026-07-22T22:25:49+02:00",
+                "duration_seconds": 136,
+                "tries": 3,
+                "wrong_answers": 2,
+                "help_needed": 1
+            }
+        ],
+        "top_easy": [],
+        "top_medium": [],
+        "top_hard": []
+    }
+}

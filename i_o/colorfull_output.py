@@ -7,11 +7,11 @@ test_massage_2 = """lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
 test_massage_3 = """l \nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea \ncommodo consequat. Duis aute irure dolor in reprehenderit in \nvoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur \nsint occaecat cupidatat non proident, idatat non proident, sunt in culpa qui officia deserunt mollit anim id\n est laborum."""
 
 
-def output_colored_text(message: str):
+def output_colored_text(message: str, end="\n", flush=False):
     """Print massage text in a hartcodet blue color with rgb(60,37,205)
     color should be set to a constant value(later)
     """
-    print(f"\033[38;2;90;117;225m{message}\033[0m")
+    print(f"\033[38;2;90;117;225m{message}\033[0m", end=end, flush=flush)
 
 
 def output_rainbow_text(message: str):
@@ -39,5 +39,4 @@ def output_rainbow_text(message: str):
 
         formatted_text.append("\n")
 
-    console.print(formatted_text[:-2])
-
+    console.print(formatted_text)
