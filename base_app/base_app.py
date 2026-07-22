@@ -21,25 +21,34 @@
 # TODO:
 #   - add animation while waiting for ai response
 
-
 import sys
 
-from ai.ai import get_initial_clou
 from base_app.config import MENU_ITEMS
+from base_app.life_loop import interact_with_user
+from base_app.player_select import get_user_menu
 from i_o.io import (
     clear_screen,
+    get_ab_choice,
+    get_category_selection,
+    get_difficulty_selection,
     get_menu_selection,
     get_user_input,
     output,
+    output_howto,
+)
+from multiplayer.multiplayer import (
+    convert_to_vincents_unnice_para_requests,
+    get_existing_users,
+    init_user,
+    save_run,
 )
 from splash.splash_screen import show_splashscreen
-from wiki_calls.wiki import handle_wikipedia
+from wiki_calls.wiki import get_random_wikipedia_article_data
 
 
 def run_game() -> None:
     clear_screen()
     """Start the game."""
-    print("dev: running")
     show_splashscreen()
 
     first_run = True
@@ -48,23 +57,72 @@ def run_game() -> None:
         if not first_run:
             clear_screen()
         first_run = False
-
-        selection = get_menu_selection()
-
-        if not selection:
+        known_users = get_existing_users()
+        user_name = get_user_menu(known_users)
+        if not user_name:
             _quit_program()
-
         else:
-            clear_screen()
-            output(
-                f"~~~~~~~~~~\nSelected menu item: "
-                f"{MENU_ITEMS[selection]}\n"
-                "~~~~~~~~~~\n",
-            )
+            init_user(user_name)
 
-            get_dispatch_menu()[selection]()
+        output(
+            f"~~~~~~~~~~\nHallo {user_name}!\n~~~~~~~~~~\n",
+            rainbow=True,
+        )
+        play_again = True
+        while play_again:
+            selection = get_menu_selection()
+            if not selection:
+                _quit_program()
 
-            _idle_after_input()
+            else:
+                clear_screen()
+                output(
+                    f"~~~~~~~~~~\nSelected menu item: "
+                    f"{MENU_ITEMS[selection - 1][0]}\n"
+                    "~~~~~~~~~~\n",
+                    rainbow=True,
+                )
+
+                wiki_content, modus = get_dispatch_menu()[selection]()
+
+                if not wiki_content:
+                    continue
+
+                # print(
+                #     f"\ndev: playing with wiki content:\n{wiki_content['header']}",
+                # )
+                print(
+                    "\ndev: get inital clou demo: ~this will take a while, wait~",
+                )
+
+                game_statistics = interact_with_user(wiki_content)
+                # for dev w/o llm use:
+                # game_statistics = {
+                #     "modus": "full_random",
+                #     "title": "Seven Samurai",
+                #     "timestamp_start": "2026-07-22T16:15:44+02:00",
+                #     "timestamp_end": "2026-07-22T16:15:51+02:00",
+                #     "tries": 0,
+                #     "wrong_answers": 0,
+                #     "help_needed": 0,
+                # }
+
+                game_statistics["modus"] = modus
+
+                output("Round finished!")
+                game_statistics = convert_to_vincents_unnice_para_requests(
+                    game_statistics,
+                )
+                assert user_name  # noqa: S101
+
+                save_run(game_statistics, user_name)
+
+                play_again = get_ab_choice(
+                    "play again? (y)es or (n)o: ",
+                    ["y", "Y"],
+                    ["n", "N"],
+                )
+        _quit_program()
 
 
 def _idle_after_input() -> None:
@@ -74,20 +132,57 @@ def _idle_after_input() -> None:
 
 def get_dispatch_menu() -> dict:
     return {
-        1: play_game,
-        2: dummy,
+        1: show_howto,
+        2: play_with_random_category,
+        3: play_with_category,
+        4: play_by_difficulty,
         0: _quit_program,
     }
 
 
-def play_game() -> None:
-    print("dev: play_game")
-    choosen_topic = get_user_input("What topic?")
-    print(f"dev: user choose {choosen_topic} - (no effect for now)")
-    print(f"dev: random wiki article:\n{handle_wikipedia()['header'][:600]}")
-    print("\ndev: get inital clou demo: ~this will take a while, wait~")
-    print(f"\ndev: get inital clou demo:\n{get_initial_clou()}")
-    print(f"dev: get inital clou demo:\n{get_initial_clou()}")
+def show_howto():
+    output_howto()
+    _idle_after_input()
+    return None, None
+
+
+def play_with_random_category():
+    # return ("get_random_wikipedia_article_data()", "full_random")
+    return (get_random_wikipedia_article_data(), "full_random")
+
+
+def play_with_category():
+    choosen_topic = get_category_selection()
+    output(
+        f"\n~~~~~~~~~~\nSelected category: {choosen_topic}\n~~~~~~~~~~\n",
+        rainbow=True,
+    )
+    if choosen_topic is not None:
+        # return ("get_random_wikipedia_article_data(choosen_topic)", "category")
+        return (get_random_wikipedia_article_data(choosen_topic), "category")
+    return None
+
+
+def play_by_difficulty():
+    choosen_difficulty = get_difficulty_selection()
+    if choosen_difficulty is not None:
+        output(
+            f"\n~~~~~~~~~~\nSelected difficulty: "
+            f"{choosen_difficulty}\n"
+            "~~~~~~~~~~\n",
+            rainbow=True,
+        )
+        # return (
+        #     "get_random_wikipedia_article_data(user_difficulty=choosen_difficulty)",
+        #     "top_" + choosen_difficulty,
+        # )
+        return (
+            get_random_wikipedia_article_data(
+                user_difficulty=choosen_difficulty,
+            ),
+            "top_" + choosen_difficulty,
+        )
+    return None
 
 
 def dummy() -> None:

@@ -1,29 +1,9 @@
-MENU_ITEMS = [
-    ["howto", "1"],
-    ["random", "2"],
-    ["by category", "3"],
-    ["by difficulty", "4"],
-    ["Exit", "0"],
-]
-
-
-PLAYER_MENU_ITEMS = [
-    ["play anonym", "anonym"],
-    ["play as user", "user"],
-]
-
-USER_TYPE_MENU_ITEMS = [
-    ["bestehenden user wählen", "existing"],
-    ["neuen user anlegen", "new"],
-]
-
 # ---Spieltexte und Menüpunkte---
 
-TITLE = """
-Willkommen zu Most Value Nerd, ein interaktives Wikipedia-Spiel!
+titeltext = """
+Willkommen zu Most Value Nerd ein interaktives Wikipedia-Spiel!
 """
-
-WELCOME_MSG_1 = """
+begruessungtext_1 = """
 Bist du bereit?
 Ein unvergessliches Abenteuer wartet auf dich!
 Prüfe dein Wissen und werde der 'Most Value Nerd'!
@@ -31,15 +11,26 @@ Vorsicht extreme Suchtgefahr!
 Bei Nebenwirkungen Fragen Sie ihren Programmierer.
 """
 
-WELCOME_MSG_2 = """
+begruessungtext_2 = """
 Begib dich auf die Reise durch die Unendliche Datenbank des Wikipedia, 
 in der jeder Artikel ein neues Puzzleteil des Menschlichen Fortschritts ist.
 Nur die besten werden es schaffen und erhalten den Titel: Most Value Nerd!
 Bist du bereit?
 """
+# menuepunkte
+
+menuepunkt_1 = """
+0: Programm beenden
+1: Mit zufälliger Kategorie spielen
+2: Mit Kategorie spielen
+3: Nach Schwierigkeitsgrad spielen
+
+Navigerung:
+Auswahl über Eingabe der Nummern, bestätigen mit Enter.
+"""
 
 
-GAME_RULES = """
+Spielregeln = """
 
 1. Spielvorbereitung & Modus
 
@@ -56,28 +47,39 @@ Ein Artikel aus einer Liste der 1000 meistgesuchten Seitenaufrufe.
 
 2. Spielablauf
 
-Nach der Auswahl wir ein automatisch generierter Textausschnitt (ca. 40-80 Wörter) des gesuchten Wikipedia-Artikels angezeigt.
+Nach der Auswahl wir ein automatisch generierter Textausschnitt (ca. 40-80 Wörter) 
+des gesuchten Wikipedia-Artikels angezeigt.
 
 Ziel des Spiel ist es, den genauen Artikels zu erraten.
 
-3. Das Ja/Nein/Warm/Kalt-
+3. Das JA/NEIN/SEHR_WARM/WARM/KALT
 Ausschlussverfahren & Lebenspunkte
 
 Der Spieler startet mit 10 Leben (Versuchen).
 
-Der Spieler tastet sich mithilfe von bin ich ...Fragen heran, die vom System ausschließlich mit      Ja, Nein, Warm, Kalt beantwortet werden.
+Der Spieler tastet sich mithilfe von bin ich ...Fragen heran, die vom System ausschließlich mit Ja, 
+Nein, Warm, Kalt beantwortet werden.
 
 Ja-Antworten: Der Versuch war erfolgreich. Die Anzahl der verbleibenden Leben bleibt unverändert.
 
 Nein-Antwort: Die Vermutung war falsch. Dem Spieler wird 1 Leben abgezogen.
 
+Sehr Warm: Dem Spieler wird kein Leben abgezogen.
+
+Warm: Dem Spieler wird kein Leben Abgezogen.
+
+Kalt: Der Spieler verliert ein Leben.
+
 4. Die Hilfestellung
 
 Der Spieler kann jederzeit während des Spiels einen zusätzlichen Hinweis (Hilfe) anfordern.
 
-Das Nutzen der Hilfe kostet den Spieler sofort 1 Leben, hat der Spieler nur noch 1 Leben ist die Nutzung der Hilfestellung nicht mehr möglich.
+Das Nutzen der Hilfe kostet den Spieler sofort 1 Leben, 
+hat der Spieler nur noch 1 Leben ist die Nutzung der Hilfestellung nicht mehr möglich.
 
 5. Spielende
 
-Das Spiel endet, wenn der Spieler den korrekten Titel errät (Sieg) oder die Anzahl der Leben auf 0 sinkt (Niederlage).
+Das Spiel endet, wenn der Spieler den korrekten Titel errät (Sieg) 
+oder die Anzahl der Leben auf 0 sinkt (Niederlage) 
+oder der Befehl Exit eingegeben wird.
 """
