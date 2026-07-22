@@ -76,7 +76,7 @@ def ask_llm(
     ) as stream:
         for event in stream:
             if event.type == "response.output_text.delta":
-                print(event.delta, end="", flush=True)
+                output(event.delta, end="", flush=True)
                 full_text += event.delta
             elif event.type == "response.completed":
                 response_id = event.response.id
