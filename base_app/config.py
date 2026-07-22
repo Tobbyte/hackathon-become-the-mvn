@@ -1,17 +1,18 @@
 MENU_ITEMS = [
-    "1.  howto",
-    "2.  random",
-    "3.  by category",
-    "4.  by difficulty",
-    "0.  Exit",
+    ["howto", "1"],
+    ["random", "2"],
+    ["by category", "3"],
+    ["by difficulty", "4"],
+    ["Exit", "0"],
 ]
 
 # ---Spieltexte und Menüpunkte---
 
-titeltext = """
-Willkommen zu Most Value Nerd ein interaktives Wikipedia-Spiel!
+TITLE = """
+Willkommen zu Most Value Nerd, ein interaktives Wikipedia-Spiel!
 """
-begruessungtext_1 = """
+
+WELCOME_MSG_1 = """
 Bist du bereit?
 Ein unvergessliches Abenteuer wartet auf dich!
 Prüfe dein Wissen und werde der 'Most Value Nerd'!
@@ -19,22 +20,15 @@ Vorsicht extreme Suchtgefahr!
 Bei Nebenwirkungen Fragen Sie ihren Programmierer.
 """
 
-begruessungtext_2 = """
+WELCOME_MSG_2 = """
 Begib dich auf die Reise durch die Unendliche Datenbank des Wikipedia, 
 in der jeder Artikel ein neues Puzzleteil des Menschlichen Fortschritts ist.
 Nur die besten werden es schaffen und erhalten den Titel: Most Value Nerd!
 Bist du bereit?
 """
 
-# menuepunkte
 
-menuepunkt_1 = """
-"""
-
-menuepunkte_2 = """
-"""
-
-Spielregeln = """
+GAME_RULES = """
 
 1. Spielvorbereitung & Modus
 
