@@ -38,8 +38,8 @@ def life_loop():
         while is_alive(lives):
             ausgabe =f"\n[Leben übrig: {lives}]"
             print(ausgabe)  # dani
-            check_answer =  #check answer ist = Funktion
-            help = #check help ist = Funktion
+            check_answer = "" #check answer ist = Funktion
+            help = ""#check help ist = Funktion
             rounds += 1
             if check_answer:
                 ausgabe = "Gut gemacht, deine Antwort war richtig!"
