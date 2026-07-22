@@ -21,18 +21,28 @@
 # TODO:
 #   - add animation while waiting for ai response
 
-
 import sys
 
-from ai.ai import get_initial_clou
+from ai.ai import ask_llm, generate_persona
+from ai.config import (
+    GAME_PERSONA,
+    GAME_SYSTEM_KONTEXT,
+    HINT_QUESTION,
+    WIKI_CONTEXT,
+)
 from base_app.config import MENU_ITEMS
 from i_o.io import (
     clear_screen,
+    get_category_selection,
+    get_difficulty_selection,
     get_menu_selection,
     get_user_input,
     output,
 )
 from splash.splash_screen import show_splashscreen
+from wiki_calls.wiki import get_random_wikipedia_article_data
+
+game_statistics = {"number_of_tries": 0, "number_of_hints": 0}
 
 
 def run_game() -> None:
@@ -61,7 +71,22 @@ def run_game() -> None:
                 "~~~~~~~~~~\n",
             )
 
-            get_dispatch_menu()[selection]()
+            wiki_content = get_dispatch_menu()[selection]()
+
+            if not wiki_content:
+                continue
+
+            print(
+                f"\ndev: playing with wiki content:\n{wiki_content['header']}",
+            )
+            print(
+                "\ndev: get inital clou demo: ~this will take a while, wait~",
+            )
+            print(
+                f"dev: wiki by choosen_topic:\n{wiki_content['header']}",
+            )
+
+            _interact_with_user(wiki_content)
 
             _idle_after_input()
 
@@ -73,17 +98,65 @@ def _idle_after_input() -> None:
 
 def get_dispatch_menu() -> dict:
     return {
-        1: play_game,
-        2: dummy,
+        1: play_with_random_category,
+        2: play_with_category,
+        3: play_by_difficulty,
         0: _quit_program,
     }
 
 
-def play_game() -> None:
-    print("dev: play_game")
-    choosen_topic = get_user_input("What topic?")
+def play_with_random_category():
+    return get_random_wikipedia_article_data()
+
+
+def play_with_category():
+    choosen_topic = get_category_selection()
     print(f"dev: user choose {choosen_topic}")
-    print(get_initial_clou())
+    if choosen_topic is not None:
+        return get_random_wikipedia_article_data(choosen_topic)
+    return None
+
+
+def play_by_difficulty():
+    choosen_difficulty = get_difficulty_selection()
+    print(f"dev: user choose {choosen_difficulty}")
+    if choosen_difficulty is not None:
+        return get_random_wikipedia_article_data(
+            user_difficulty=choosen_difficulty,
+        )
+    return None
+
+
+def _interact_with_user(wiki_article: dict) -> None:
+    title = wiki_article["title"]
+    full_article = wiki_article["full_article"]
+    persona = generate_persona()
+    wiki_summary, last_id = ask_llm(persona, full_article)
+    print(wiki_summary)
+
+    print("\ndev: get inital clou demo: ~this will take a while, wait~")
+    print(f"\ndev: get inital clou demo:\n{wiki_summary}")
+
+    while True:
+        user_input = get_user_input("Rate mal...")
+        if user_input.lower() == "help":
+            game_statistics["number_of_hints"] += 1
+            hint_response, last_id = ask_llm(
+                persona, wiki_summary, HINT_QUESTION, last_id
+            )
+            print(f"Hint response: \n{hint_response}\n")
+        elif user_input == "exit":
+            print(game_statistics)
+            break
+        else:
+            game_statistics["number_of_tries"] += 1
+            context = GAME_SYSTEM_KONTEXT.format(summary=wiki_summary, solution=title)
+            game_response, last_id = ask_llm(GAME_PERSONA, context, user_input, last_id)
+            print("Game response: ", game_response)
+            if game_response == "JA":
+                print("Congratulations! You win!")
+                print(game_statistics)
+                break
 
 
 def dummy() -> None:
