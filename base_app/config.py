@@ -3,6 +3,7 @@ MENU_ITEMS = [
     ["random", "2"],
     ["by category", "3"],
     ["by difficulty", "4"],
+    ["scoreboard", "5"],
     ["Exit", "0"],
 ]
 
