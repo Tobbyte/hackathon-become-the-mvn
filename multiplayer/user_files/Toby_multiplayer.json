@@ -1,0 +1,414 @@
+{
+    "player": "Toby",
+    "created_at": "2026-07-22T23:04:15+02:00",
+    "last_updated": "2026-07-22T23:04:28+02:00",
+    "total_runs": 20,
+    "personal_records": {
+        "normal": {
+            "least_attempts": {
+                "full_random": {
+                    "user_name": "Toby",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T23:02:34+02:00",
+                    "duration_seconds": 114,
+                    "tries": 6,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "category": {
+                    "user_name": "Toby",
+                    "modus": "category",
+                    "title": "Theodore Roosevelt",
+                    "timestamp_start": "2026-07-22T22:56:44+02:00",
+                    "duration_seconds": 464,
+                    "tries": 5,
+                    "wrong_answers": 0,
+                    "help_needed": 0
+                },
+                "top_easy": {
+                    "user_name": "Toby",
+                    "modus": "top_easy",
+                    "title": "Berlin",
+                    "timestamp_start": "2026-07-22T23:03:09+02:00",
+                    "duration_seconds": 66,
+                    "tries": 5,
+                    "wrong_answers": 0,
+                    "help_needed": 2
+                },
+                "top_medium": {
+                    "user_name": "Toby",
+                    "modus": "top_medium",
+                    "title": "Theodore Roosevelt",
+                    "timestamp_start": "2026-07-22T22:57:21+02:00",
+                    "duration_seconds": 427,
+                    "tries": 6,
+                    "wrong_answers": 3,
+                    "help_needed": 4
+                },
+                "top_hard": {
+                    "user_name": "Toby",
+                    "modus": "top_hard",
+                    "title": "The Godfather",
+                    "timestamp_start": "2026-07-22T22:54:21+02:00",
+                    "duration_seconds": 594,
+                    "tries": 8,
+                    "wrong_answers": 4,
+                    "help_needed": 4
+                }
+            },
+            "fastest": {
+                "full_random": {
+                    "user_name": "Toby",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T23:02:34+02:00",
+                    "duration_seconds": 114,
+                    "tries": 6,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "category": {
+                    "user_name": "Toby",
+                    "modus": "category",
+                    "title": "Cristiano Ronaldo",
+                    "timestamp_start": "2026-07-22T23:01:07+02:00",
+                    "duration_seconds": 188,
+                    "tries": 13,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "top_easy": {
+                    "user_name": "Toby",
+                    "modus": "top_easy",
+                    "title": "Berlin",
+                    "timestamp_start": "2026-07-22T23:03:09+02:00",
+                    "duration_seconds": 66,
+                    "tries": 5,
+                    "wrong_answers": 0,
+                    "help_needed": 2
+                },
+                "top_medium": {
+                    "user_name": "Toby",
+                    "modus": "top_medium",
+                    "title": "Theodore Roosevelt",
+                    "timestamp_start": "2026-07-22T23:00:15+02:00",
+                    "duration_seconds": 240,
+                    "tries": 10,
+                    "wrong_answers": 4,
+                    "help_needed": 2
+                },
+                "top_hard": {
+                    "user_name": "Toby",
+                    "modus": "top_hard",
+                    "title": "Lion",
+                    "timestamp_start": "2026-07-22T23:03:04+02:00",
+                    "duration_seconds": 84,
+                    "tries": 10,
+                    "wrong_answers": 1,
+                    "help_needed": 3
+                }
+            }
+        },
+        "ironman": {
+            "least_attempts": {
+                "full_random": {
+                    "user_name": "Toby",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T23:02:34+02:00",
+                    "duration_seconds": 114,
+                    "tries": 6,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "category": {
+                    "user_name": "Toby",
+                    "modus": "category",
+                    "title": "Theodore Roosevelt",
+                    "timestamp_start": "2026-07-22T22:56:44+02:00",
+                    "duration_seconds": 464,
+                    "tries": 5,
+                    "wrong_answers": 0,
+                    "help_needed": 0
+                },
+                "top_easy": {
+                    "user_name": "Toby",
+                    "modus": "top_easy",
+                    "title": "Albert Einstein",
+                    "timestamp_start": "2026-07-22T22:55:08+02:00",
+                    "duration_seconds": 560,
+                    "tries": 16,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "top_medium": null,
+                "top_hard": {
+                    "user_name": "Toby",
+                    "modus": "top_hard",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T23:02:36+02:00",
+                    "duration_seconds": 112,
+                    "tries": 19,
+                    "wrong_answers": 2,
+                    "help_needed": 0
+                }
+            },
+            "fastest": {
+                "full_random": {
+                    "user_name": "Toby",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T23:02:34+02:00",
+                    "duration_seconds": 114,
+                    "tries": 6,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "category": {
+                    "user_name": "Toby",
+                    "modus": "category",
+                    "title": "Cristiano Ronaldo",
+                    "timestamp_start": "2026-07-22T23:01:07+02:00",
+                    "duration_seconds": 188,
+                    "tries": 13,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "top_easy": {
+                    "user_name": "Toby",
+                    "modus": "top_easy",
+                    "title": "Albert Einstein",
+                    "timestamp_start": "2026-07-22T22:55:08+02:00",
+                    "duration_seconds": 560,
+                    "tries": 16,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "top_medium": null,
+                "top_hard": {
+                    "user_name": "Toby",
+                    "modus": "top_hard",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T23:02:36+02:00",
+                    "duration_seconds": 112,
+                    "tries": 19,
+                    "wrong_answers": 2,
+                    "help_needed": 0
+                }
+            }
+        }
+    },
+    "runs": {
+        "full_random": [
+            {
+                "user_name": "Toby",
+                "modus": "full_random",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-22T22:56:10+02:00",
+                "duration_seconds": 485,
+                "tries": 18,
+                "wrong_answers": 0,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Toby",
+                "modus": "full_random",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-22T23:02:34+02:00",
+                "duration_seconds": 114,
+                "tries": 6,
+                "wrong_answers": 5,
+                "help_needed": 0
+            }
+        ],
+        "category": [
+            {
+                "user_name": "Toby",
+                "modus": "category",
+                "title": "Cristiano Ronaldo",
+                "timestamp_start": "2026-07-22T23:01:07+02:00",
+                "duration_seconds": 188,
+                "tries": 13,
+                "wrong_answers": 5,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Toby",
+                "modus": "category",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:56:44+02:00",
+                "duration_seconds": 464,
+                "tries": 5,
+                "wrong_answers": 0,
+                "help_needed": 0
+            }
+        ],
+        "top_easy": [
+            {
+                "user_name": "Toby",
+                "modus": "top_easy",
+                "title": "Albert Einstein",
+                "timestamp_start": "2026-07-22T23:01:19+02:00",
+                "duration_seconds": 176,
+                "tries": 6,
+                "wrong_answers": 4,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_easy",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-22T23:00:18+02:00",
+                "duration_seconds": 237,
+                "tries": 18,
+                "wrong_answers": 2,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_easy",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-22T23:03:09+02:00",
+                "duration_seconds": 66,
+                "tries": 5,
+                "wrong_answers": 0,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_easy",
+                "title": "Albert Einstein",
+                "timestamp_start": "2026-07-22T22:55:08+02:00",
+                "duration_seconds": 560,
+                "tries": 16,
+                "wrong_answers": 5,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_easy",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-22T22:56:38+02:00",
+                "duration_seconds": 470,
+                "tries": 13,
+                "wrong_answers": 2,
+                "help_needed": 2
+            }
+        ],
+        "top_medium": [
+            {
+                "user_name": "Toby",
+                "modus": "top_medium",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T23:00:15+02:00",
+                "duration_seconds": 240,
+                "tries": 10,
+                "wrong_answers": 4,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_medium",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:59:30+02:00",
+                "duration_seconds": 298,
+                "tries": 9,
+                "wrong_answers": 2,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_medium",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:57:21+02:00",
+                "duration_seconds": 427,
+                "tries": 6,
+                "wrong_answers": 3,
+                "help_needed": 4
+            }
+        ],
+        "top_hard": [
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T22:54:21+02:00",
+                "duration_seconds": 594,
+                "tries": 8,
+                "wrong_answers": 4,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "European hedgehog",
+                "timestamp_start": "2026-07-22T23:01:25+02:00",
+                "duration_seconds": 170,
+                "tries": 11,
+                "wrong_answers": 3,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "European hedgehog",
+                "timestamp_start": "2026-07-22T22:55:30+02:00",
+                "duration_seconds": 525,
+                "tries": 13,
+                "wrong_answers": 1,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "Albert Einstein",
+                "timestamp_start": "2026-07-22T22:54:40+02:00",
+                "duration_seconds": 575,
+                "tries": 20,
+                "wrong_answers": 0,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-22T23:02:36+02:00",
+                "duration_seconds": 112,
+                "tries": 19,
+                "wrong_answers": 2,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "Lion",
+                "timestamp_start": "2026-07-22T23:03:04+02:00",
+                "duration_seconds": 84,
+                "tries": 10,
+                "wrong_answers": 1,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T23:01:26+02:00",
+                "duration_seconds": 182,
+                "tries": 15,
+                "wrong_answers": 3,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Toby",
+                "modus": "top_hard",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-22T22:58:00+02:00",
+                "duration_seconds": 388,
+                "tries": 12,
+                "wrong_answers": 4,
+                "help_needed": 4
+            }
+        ]
+    }
+}
