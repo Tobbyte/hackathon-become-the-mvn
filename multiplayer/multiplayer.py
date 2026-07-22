@@ -195,13 +195,21 @@ def _announce_record(
     output(
         f"NEW PERSONAL {record_version.upper()} RECORD for the {record_modus} in category: {modus}",
     )
-    _print_current_run(run_profile)
 
 
 def _print_current_run(run: dict):
-    output(
-        f"title: {run['title']} - Category: {run['modus']}, tries: {run['tries']}, wrong answers: {run['wrong_answers']}, seconds: {run['duration_seconds']}, help needed: {run['help_needed']}",
-    )  # Platzhalter print
+    print()
+    output("Deine Statistik:")
+    print()
+    for k, v in run.items():
+        if v in PRETTY_MODI_KEYS:
+            v = PRETTY_MODI_KEYS[v]
+        output(f"     {PRETTY_STATS_KEYS[k]}: {v}")
+    print()
+
+    # output(
+    #     f"title: {run['title']} - Category: {run['modus']}, tries: {run['tries']}, wrong answers: {run['wrong_answers']}, seconds: {run['duration_seconds']}, help needed: {run['help_needed']}",
+    # )  # Platzhalter print
 
 
 def _update_last_updated(user_file):
@@ -237,6 +245,23 @@ def convert_to_vincents_unnice_para_requests(dictus):
         dictus["help_needed"],
     )
 
+PRETTY_STATS_KEYS = {
+    "user_name": "Nutzername",
+    "modus": "Spielmodus",
+    "title": "Wikipedia-Artikel",
+    "timestamp_start": "Startzeit",
+    "duration_seconds": "Endzeit",
+    "tries": "Versuche",
+    "wrong_answers": "Falsche Antworten",
+    "help_needed": "Hilfe geholt",
+}
+PRETTY_MODI_KEYS = {
+    "full_random": "zufällig",
+    "category": "Nach Kategorie",
+    "top_easy": "Schwierigkeit einfach",
+    "top_medium": "Schwierigkeit mittel",
+    "top_hard": "Schwierigkeit schwer",
+}
 
 def save_run(save_game: tuple[str, str, str, str, int, int, int], user_name: str):
     user_filename = os.path.join(
@@ -245,6 +270,7 @@ def save_run(save_game: tuple[str, str, str, str, int, int, int], user_name: str
     )
     user_file = multiplayer_filehandler.load_file(user_filename)
     run_profile = _create_run_profile(save_game, user_name)
+    _print_current_run(run_profile)
     _add_run_to_file(user_file, run_profile)
     _update_personal_records(user_file, run_profile)
     _update_last_updated(user_file)
