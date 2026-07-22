@@ -160,7 +160,7 @@ def play_with_category():
     if choosen_topic is not None:
         # return ("get_random_wikipedia_article_data(choosen_topic)", "category")
         return (get_random_wikipedia_article_data(choosen_topic), "category")
-    return None
+    return None, None
 
 
 def play_by_difficulty():
@@ -182,7 +182,7 @@ def play_by_difficulty():
             ),
             "top_" + choosen_difficulty,
         )
-    return None
+    return None, None
 
 
 def dummy() -> None:
