@@ -16,4 +16,4 @@ ________________________________     ___ ______________   ______________     ___
 """
 
 
-WELCOME_MSG = "Press Enter to play."
+PROCEED = "Press Enter to play."
