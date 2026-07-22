@@ -2,9 +2,15 @@ from datetime import datetime
 
 from ai.ai import ask_llm, generate_persona
 from ai.config import GAME_PERSONA, GAME_SYSTEM_KONTEXT, HINT_QUESTION
+from i_o.ascii_art import conspiracy_theorist_ascii, pirat_ascii, yoda_ascii
 from i_o.io import get_user_input, output
 from multiplayer.multiplayer import create_timestamp
 
+PERSONA_TO_ASCII = {
+    "conspiracy_theorist": conspiracy_theorist_ascii,
+    "pirat_persona": pirat_ascii,
+    "yoda_persona": yoda_ascii,
+}
 
 def interact_with_user(wiki_article: dict) -> dict:
     game_statistics = {
@@ -23,15 +29,15 @@ def interact_with_user(wiki_article: dict) -> dict:
     }
     title = wiki_article["title"]
     full_article = wiki_article["full_article"]
-    persona = generate_persona()
+    persona, persona_name = generate_persona()
     wiki_summary, last_id = ask_llm(persona, full_article)
-    output(wiki_summary)
+    output(PERSONA_TO_ASCII[persona_name] + "\n" + wiki_summary)
 
     while True:
         game_status(game_statistics)
         user_input = ""
         while True:
-            user_input = get_user_input("Rate mal... (exit | hilfe)")
+            user_input = get_user_input("Rate mal... (exit | hilfe) ")
             if not user_input:
                 output("Bitte gebe eine Antwort ein!")
             else:

@@ -1,4 +1,5 @@
 import os
+from random import choice
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -11,6 +12,7 @@ from ai.config import (
     WIKI_PERSONA,
     WIKI_QUESTION,
 )
+from ai.personas import PERSONAS
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -18,9 +20,10 @@ api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI()
 
 
-def generate_persona(persona: str = WIKI_PERSONA):
+def generate_persona():
     common_role = "Du bist der Spielleiter des Ratespiels.\n"
-    return common_role + persona
+    persona = choice(list(PERSONAS.keys()))
+    return (common_role + persona, persona)
 
 
 def ask_llm(
