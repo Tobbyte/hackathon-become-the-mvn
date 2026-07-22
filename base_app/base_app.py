@@ -41,7 +41,9 @@ from multiplayer.multiplayer import (
     get_existing_users,
     init_user,
     save_run,
+    print_all_global_leaderboards,
 )
+
 from splash.splash_screen import show_splashscreen
 from wiki_calls.wiki import get_random_wikipedia_article_data
 
@@ -157,10 +159,8 @@ def show_scoreboard():
     return None, None
 
 
-def print_scoreboard(scoreboard_data: dict = {}) -> None:
-    output("Hier könnte ihr scoreboard stehen")
-    for k, v in scoreboard_data.items():
-        output(f"{k}: {v}")
+def print_scoreboard() -> None:
+    print_all_global_leaderboards()
 
 
 def play_with_random_category():
