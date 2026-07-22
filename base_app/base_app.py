@@ -36,7 +36,12 @@ from i_o.io import (
     output,
     output_howto,
 )
-from multiplayer.multiplayer import get_existing_users
+from multiplayer.multiplayer import (
+    convert_to_vincents_unnice_para_requests,
+    get_existing_users,
+    init_user,
+    save_run,
+)
 from splash.splash_screen import show_splashscreen
 from wiki_calls.wiki import get_random_wikipedia_article_data
 
@@ -56,51 +61,69 @@ def run_game() -> None:
         user_name = get_user_menu(known_users)
         if not user_name:
             _quit_program()
+        else:
+            init_user(user_name)
 
         output(
             f"~~~~~~~~~~\nHallo {user_name}!\n~~~~~~~~~~\n",
             rainbow=True,
         )
+        play_again = True
+        while play_again:
+            selection = get_menu_selection()
+            if not selection:
+                _quit_program()
 
-        selection = get_menu_selection()
-        if not selection:
-            _quit_program()
+            else:
+                clear_screen()
+                output(
+                    f"~~~~~~~~~~\nSelected menu item: "
+                    f"{MENU_ITEMS[selection - 1][0]}\n"
+                    "~~~~~~~~~~\n",
+                    rainbow=True,
+                )
 
-        else:
-            clear_screen()
-            output(
-                f"~~~~~~~~~~\nSelected menu item: "
-                f"{MENU_ITEMS[selection - 1][0]}\n"
-                "~~~~~~~~~~\n",
-                rainbow=True,
-            )
+                wiki_content = get_dispatch_menu()[selection]()
 
-            wiki_content = get_dispatch_menu()[selection]()
+                if not wiki_content:
+                    continue
 
-            if not wiki_content:
-                continue
+                # print(
+                #     f"\ndev: playing with wiki content:\n{wiki_content['header']}",
+                # )
+                print(
+                    "\ndev: get inital clou demo: ~this will take a while, wait~",
+                )
 
-            print(
-                f"\ndev: playing with wiki content:\n{wiki_content['header']}",
-            )
-            print(
-                "\ndev: get inital clou demo: ~this will take a while, wait~",
-            )
-            print(
-                f"dev: wiki by choosen_topic:\n{wiki_content['header']}",
-            )
-            play_again = True
-            while play_again:
                 game_statistics = interact_with_user(wiki_content)
-
-                print("Round finished!")
-                print(game_statistics)
+                # for dev w/o llm use:
+                # game_statistics = {
+                #     "modus": "full_random",
+                #     "title": "Seven Samurai",
+                #     "timestamp_start": "2026-07-22T16:15:44+02:00",
+                #     "timestamp_end": "2026-07-22T16:15:51+02:00",
+                #     "tries": 0,
+                #     "wrong_answers": 0,
+                #     "help_needed": 0,
+                # }
+                game_statistics["modus"] = "full_random"
+                # modus allowed, muss noc rein:
+                # "full_random"
+                # "category"
+                # "top_easy"
+                # "top_medium"
+                # "top_hard"
+                output("Round finished!")
+                game_statistics = convert_to_vincents_unnice_para_requests(
+                    game_statistics,
+                )
+                assert user_name  # noqa: S101
+                save_run(game_statistics, user_name)
                 play_again = get_ab_choice(
                     "play again? (y)es or (n)o: ",
                     ["y", "Y"],
                     ["n", "N"],
                 )
-
         _quit_program()
 
 
