@@ -37,11 +37,16 @@ def _get_existing_user_selection(user_list: list[str]) -> str | None:
     return None
 
 
-def _get_new_username(known_users: list) -> str | None:
+def _get_new_username(
+    known_users: list,
+    insit_to_quit: bool = False,
+) -> str | None:
     username = get_user_input("\nUsername eingeben: ").strip()
     if username == "":
-        output("username cant be empty")
-        return _get_new_username(known_users)
+        if insit_to_quit:
+            return None
+        output("username cant be empty.\nOr press ENTER again to return.")
+        return _get_new_username(known_users, True)
     if username in known_users:
         output("username already exists")
         return _get_new_username(known_users)
@@ -75,6 +80,9 @@ def get_user_menu(
         return existing_user_name
 
     if user_type == "new":
-        return _get_new_username(user_list)
+        new_user_name = _get_new_username(user_list)
+        if new_user_name is None:
+            return get_user_menu(user_list)
+        return new_user_name
 
     return None
