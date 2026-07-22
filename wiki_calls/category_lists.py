@@ -326,10 +326,10 @@ public_figures = [
 
 
 categories = [
-    ["Animals", animals],
-    ["Movies", movies],
-    ["Cities", cities],
-    ["Public Figures", public_figures],
-    ["Countries", countries],
-    ["Fictional Characters", fictional_characters]
+    ["Tiere", animals],
+    ["Filme", movies],
+    ["Städte", cities],
+    ["Personen", public_figures],
+    ["Länder", countries],
+    ["Fiktive Charaktere", fictional_characters],
 ]
