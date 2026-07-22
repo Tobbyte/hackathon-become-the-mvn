@@ -31,54 +31,16 @@ def clear_screen() -> None:
     print("\n\n\n\n")  ## spacer
 
 
-def get_menu_selection() -> int | None:
-    """Print the menu to the user, asks for input.
-
-    see base_app.config.MENU_ITEMS
-    Options:
-        0:  Exit
-        1:  tbd
-    """
-    output("")
-
-    output("Menu:")
-    for item in MENU_ITEMS:
-        output(item)
-
-    insist_to_quit = False
-
-    while True:
-        selection = get_user_input(
-            f"\nEnter choice (0-{len(MENU_ITEMS) - 1}): ",
-        ).strip()
-
-        if selection == "" and insist_to_quit:
-            return None
-        if not selection.isdecimal() or not menu_selection_in_range(selection):
-            output(
-                "Invalid input (Enter 0 - 11. Try again).\n"
-                "Or press ENTER again to quit",
-            )
-            insist_to_quit = True
-        else:
-            break
-
-    return int(selection)
-
-
-# TODO: die drei hier sind dreckig. menu, category and difficulty
-# selectino sollten eine abstraktion sein
-
-
-def get_category_selection() -> str:
+def get_menu_selection_multi(menu: tuple[str, list[list]]) -> list | None:
     """Print the available categories, asks for input.
 
     see wiki_calls.category_list
     """
+    menu_name, menu_items = menu
     output("")
-    output("Categories:")
+    output(f"{menu_name}:")
     menu_i = 0
-    for cat in categories:
+    for cat in menu_items:
         menu_i += 1
         output(f"{menu_i}: {cat[0]}")
 
@@ -103,44 +65,32 @@ def get_category_selection() -> str:
             insist_to_quit = True
         else:
             break
-    return categories[int(selection) - 1][0]
+
+    return menu_items[int(selection) - 1]
 
 
-def get_difficulty_selection() -> str:
-    """Print the available categories, asks for input.
+def get_menu_selection() -> int | None:
+    sel = get_menu_selection_multi(("Hauptmenü", MENU_ITEMS))
+    if sel is not None:
+        return int(sel[1])
+    return None
+    # return int(selection)
 
-    see wiki_calls.category_list
-    """
-    output("")
-    output("Categories:")
-    diff_i = 0
-    for diff in DIFFICULTIES_TOP:
-        diff_i += 1
-        output(f"{diff_i}: {diff[0]}")
 
-    insist_to_quit = False
+def get_category_selection() -> str | None:
+    sel = get_menu_selection_multi(("Kategorien", categories))
+    if sel is not None:
+        return sel[0]
+    return None
+    # return categories[int(selection) - 1][0]
 
-    while True:
-        selection = get_user_input(
-            f"\nEnter choice (1-{diff_i}): ",
-        ).strip()
 
-        if selection == "" and insist_to_quit:
-            return None
-
-        if not selection.isdecimal() or not get_difficulty_selection_in_range(
-            selection,
-            diff_i,
-        ):
-            output(
-                f"Invalid input (Enter 0 - {diff_i}. Try again).\n"
-                "Or press ENTER again to return to main menu",
-            )
-            insist_to_quit = True
-        else:
-            break
-
-    return DIFFICULTIES_TOP[int(selection) - 1][0]
+def get_difficulty_selection() -> str | None:
+    sel = get_menu_selection_multi(("Schwierigkeit", DIFFICULTIES_TOP))
+    if sel is not None:
+        return sel[0]
+    return None
+    # return DIFFICULTIES_TOP[int(selection) - 1][0]
 
 
 def get_difficulty_selection_in_range(
