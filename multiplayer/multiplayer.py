@@ -1,11 +1,15 @@
 import os
-# import subprocess
-from datetime import datetime
+
 # from zoneinfo import ZoneInfo
 import random
-import multiplayer_filehandler
 from i_o.io import output
+from multiplayer import multiplayer_filehandler
 
+# import subprocess
+from datetime import datetime
+
+from i_o.io import output
+from multiplayer import multiplayer_filehandler
 
 USER_FILES_FOLDER: str = os.path.join(
     os.path.dirname(__file__),
@@ -37,8 +41,8 @@ def _get_user_score_file(new_user: str) -> dict:
     categories = _get_categories()
     player_scores = {}
     player_scores["player"] = new_user
-    player_scores["created_at"] = _create_timestamp()
-    player_scores["last_updated"] = _create_timestamp()
+    player_scores["created_at"] = create_timestamp()
+    player_scores["last_updated"] = create_timestamp()
     player_scores["personal_records"] = {}
     player_scores["personal_records"]["normal"] = {}
     player_scores["personal_records"]["normal"]["least_attempts"] = {}
@@ -67,7 +71,8 @@ def _get_categories() -> list[str]:
     return categories
 
 
-def _create_timestamp():
+
+def create_timestamp():
     return datetime.now().astimezone().isoformat(timespec="seconds")
 
 
@@ -124,7 +129,8 @@ def _add_run_to_file(user_file: dict, run_profile: dict):
 
 
 def _update_personal_records(
-    user_file: dict, run_profile: dict
+    user_file: dict,
+    run_profile: dict,
 ):  # run_profile wird geadded
     modus = run_profile["modus"]
     r_n_least = user_file["personal_records"]["normal"]["least_attempts"]
@@ -134,7 +140,10 @@ def _update_personal_records(
     if r_n_least[modus] is None or r_n_least[modus]["tries"] > run_profile["tries"]:
         r_n_least[modus] = run_profile
         _announce_record(
-            modus, "fewest attempts", "normal", run_profile
+            modus,
+            "fewest attempts",
+            "normal",
+            run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
         print()
 
@@ -144,7 +153,10 @@ def _update_personal_records(
     ):
         r_n_fastest[modus] = run_profile
         _announce_record(
-            modus, "fastest run", "normal", run_profile
+            modus,
+            "fastest run",
+            "normal",
+            run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
         print()
 
@@ -153,7 +165,10 @@ def _update_personal_records(
     ) and run_profile["help_needed"] == 0:
         r_i_least[modus] = run_profile
         _announce_record(
-            modus, "fewest attempts", "ironman", run_profile
+            modus,
+            "fewest attempts",
+            "ironman",
+            run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
         print()
 
@@ -163,28 +178,34 @@ def _update_personal_records(
     ) and run_profile["help_needed"] == 0:
         r_i_fastest[modus] = run_profile
         _announce_record(
-            modus, "fastest run", "ironman", run_profile
+            modus,
+            "fastest run",
+            "ironman",
+            run_profile,
         )  # 1st = modus, 2nd = normal, 3rd = run_file
         print()
 
 
 def _announce_record(
-    modus: str, record_modus: str, record_version: str, run_profile: dict
+    modus: str,
+    record_modus: str,
+    record_version: str,
+    run_profile: dict,
 ):
     output(
-        f"NEW PERSONAL {record_version.upper()} RECORD for the {record_modus} in category: {modus}"
+        f"NEW PERSONAL {record_version.upper()} RECORD for the {record_modus} in category: {modus}",
     )
     _print_current_run(run_profile)
 
 
 def _print_current_run(run: dict):
     output(
-        f"title: {run['title']} - Category: {run['modus']}, tries: {run['tries']}, wrong answers: {run['wrong_answers']}, seconds: {run['duration_seconds']}, help needed: {run['help_needed']}"
+        f"title: {run['title']} - Category: {run['modus']}, tries: {run['tries']}, wrong answers: {run['wrong_answers']}, seconds: {run['duration_seconds']}, help needed: {run['help_needed']}",
     )  # Platzhalter print
 
 
 def _update_last_updated(user_file):
-    user_file["last_updated"] = _create_timestamp()
+    user_file["last_updated"] = create_timestamp()
 
 
 def get_existing_users() -> list[str]:
@@ -196,6 +217,8 @@ def get_existing_users() -> list[str]:
             users.append(user_name)
 
     users.sort()
+    if not users:
+        users = ["Dörte", "Pen15", "ers0r"]
     return users
 
 
