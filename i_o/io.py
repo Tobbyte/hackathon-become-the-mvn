@@ -49,7 +49,7 @@ def get_menu_selection() -> int | None:
 
     while True:
         selection = get_user_input(
-            "\nEnter choice (0-11): ",
+            f"\nEnter choice (0-{len(MENU_ITEMS) - 1}): ",
         ).strip()
 
         if selection == "" and insist_to_quit:
