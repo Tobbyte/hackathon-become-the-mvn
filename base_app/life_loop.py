@@ -27,6 +27,7 @@ def interact_with_user(wiki_article: dict) -> dict:
         "timestamp_start": create_timestamp(),
         "timestamp_end": None,
         "title": wiki_article["title"],
+        "exit": False,
     }
     title = wiki_article["title"]
     full_article = wiki_article["full_article"]
@@ -57,6 +58,7 @@ def interact_with_user(wiki_article: dict) -> dict:
                 game_statistics = life_loop(game_statistics, "Hilfe")
 
         elif user_input.lower() == "exit":
+            game_statistics["exit"] = True
             game_statistics["timestamp_end"] = create_timestamp()
             break
         else:
