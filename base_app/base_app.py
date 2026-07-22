@@ -25,6 +25,7 @@ import sys
 
 from base_app.config import MENU_ITEMS
 from base_app.life_loop import interact_with_user
+from base_app.player_select import get_user_menu
 from i_o.io import (
     clear_screen,
     get_category_selection,
@@ -49,6 +50,10 @@ def run_game() -> None:
         if not first_run:
             clear_screen()
         first_run = False
+
+        user_name = get_user_menu()
+        if not user_name:
+            _quit_program()
 
         selection = get_menu_selection()
         if not selection:

@@ -34,7 +34,10 @@ def clear_screen() -> None:
     print("\n\n\n\n")  ## spacer
 
 
-def get_menu_selection_multi(menu: tuple[str, list[list]]) -> list | None:
+def get_menu_selection_multi(
+    menu: tuple[str, list[list]],
+    insits_msg: str = "Or press ENTER again to return to main menu",
+) -> list | None:
     """Print the available categories, asks for input.
 
     see wiki_calls.category_list
@@ -63,7 +66,7 @@ def get_menu_selection_multi(menu: tuple[str, list[list]]) -> list | None:
         ):
             output(
                 f"Invalid input (Enter 0 - {menu_i}. Try again).\n"
-                "Or press ENTER again to return to main menu",
+                f"{insits_msg}",
                 rainbow=True,
             )
             insist_to_quit = True
