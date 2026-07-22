@@ -34,6 +34,7 @@ from base_app.config import MENU_ITEMS
 from i_o.io import (
     clear_screen,
     get_category_selection,
+    get_difficulty_selection,
     get_menu_selection,
     get_user_input,
     output,
@@ -70,7 +71,26 @@ def run_game() -> None:
                 "~~~~~~~~~~\n",
             )
 
-            get_dispatch_menu()[selection]()
+            wiki_content = get_dispatch_menu()[selection]()
+
+            if not wiki_content:
+                continue
+
+            print(
+                f"\ndev: playing with wiki content:\n{wiki_content['header']}",
+            )
+            print(
+                "\ndev: get inital clou demo: ~this will take a while, wait~",
+            )
+            print(
+                f"\ndev: get inital clou demo:\n{get_initial_clou(wiki_content['header'])}",
+            )
+            #wiki_article = get_random_wikipedia_article_data(choosen_topic)
+            print(
+                f"dev: wiki by choosen_topic:\n{wiki_article['header']}",
+            )
+
+            _interact_with_user(wiki_article)
 
             _idle_after_input()
 
@@ -82,15 +102,33 @@ def _idle_after_input() -> None:
 
 def get_dispatch_menu() -> dict:
     return {
-        1: play_game,
-        2: dummy,
+        1: play_with_random_category,
+        2: play_with_category,
+        3: play_by_difficulty,
         0: _quit_program,
     }
 
-    # 1: get_random_wikipedia_article_data,  # random
-    # 2: get_random_wikipedia_article_data,  # 1. get_category_selection -> get_random_wikipedia_article_data(categprie)
-    # 3: get_random_wikipedia_article_data,  # 1. get_difficulty_selection -> get_random_wikipedia_article_data(difficulty)
 
+def play_with_random_category():
+    return get_random_wikipedia_article_data()
+
+
+def play_with_category():
+    choosen_topic = get_category_selection()
+    print(f"dev: user choose {choosen_topic}")
+    if choosen_topic is not None:
+        return get_random_wikipedia_article_data(choosen_topic)
+    return None
+
+
+def play_by_difficulty():
+    choosen_difficulty = get_difficulty_selection()
+    print(f"dev: user choose {choosen_difficulty}")
+    if choosen_difficulty is not None:
+        return get_random_wikipedia_article_data(
+            user_difficulty=choosen_difficulty,
+        )
+    return None
 
 def _interact_with_user(wiki_article: dict) -> None:
     title = wiki_article["title"]
@@ -122,19 +160,6 @@ def _interact_with_user(wiki_article: dict) -> None:
                 print("Congratulations! You win!")
                 print(game_statistics)
                 break
-
-
-def play_game() -> None:
-    print("dev: play_game")
-    choosen_topic = get_category_selection()
-    print(f"dev: user choose {choosen_topic}")
-    wiki_article = get_random_wikipedia_article_data(choosen_topic)
-    print(
-        f"dev: wiki by choosen_topic:\n{wiki_article['header']}",
-    )
-
-    _interact_with_user(wiki_article)
-
 
 def dummy() -> None:
     print("dev: I'm a dummy menu item dispatch function")
