@@ -1,0 +1,378 @@
+{
+    "player": "Duclos",
+    "created_at": "2026-07-22T23:04:15+02:00",
+    "last_updated": "2026-07-22T23:04:28+02:00",
+    "total_runs": 20,
+    "personal_records": {
+        "normal": {
+            "least_attempts": {
+                "full_random": {
+                    "user_name": "Duclos",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T22:57:41+02:00",
+                    "duration_seconds": 407,
+                    "tries": 16,
+                    "wrong_answers": 5,
+                    "help_needed": 4
+                },
+                "category": {
+                    "user_name": "Duclos",
+                    "modus": "category",
+                    "title": "Lion",
+                    "timestamp_start": "2026-07-22T22:59:15+02:00",
+                    "duration_seconds": 300,
+                    "tries": 8,
+                    "wrong_answers": 4,
+                    "help_needed": 3
+                },
+                "top_easy": {
+                    "user_name": "Duclos",
+                    "modus": "top_easy",
+                    "title": "Michael Jackson",
+                    "timestamp_start": "2026-07-22T23:00:36+02:00",
+                    "duration_seconds": 219,
+                    "tries": 13,
+                    "wrong_answers": 1,
+                    "help_needed": 2
+                },
+                "top_medium": {
+                    "user_name": "Duclos",
+                    "modus": "top_medium",
+                    "title": "World War II",
+                    "timestamp_start": "2026-07-22T22:58:16+02:00",
+                    "duration_seconds": 359,
+                    "tries": 5,
+                    "wrong_answers": 1,
+                    "help_needed": 5
+                },
+                "top_hard": {
+                    "user_name": "Duclos",
+                    "modus": "top_hard",
+                    "title": "Lion",
+                    "timestamp_start": "2026-07-22T23:00:13+02:00",
+                    "duration_seconds": 255,
+                    "tries": 8,
+                    "wrong_answers": 2,
+                    "help_needed": 4
+                }
+            },
+            "fastest": {
+                "full_random": {
+                    "user_name": "Duclos",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T22:57:41+02:00",
+                    "duration_seconds": 407,
+                    "tries": 16,
+                    "wrong_answers": 5,
+                    "help_needed": 4
+                },
+                "category": {
+                    "user_name": "Duclos",
+                    "modus": "category",
+                    "title": "Lion",
+                    "timestamp_start": "2026-07-22T22:59:15+02:00",
+                    "duration_seconds": 300,
+                    "tries": 8,
+                    "wrong_answers": 4,
+                    "help_needed": 3
+                },
+                "top_easy": {
+                    "user_name": "Duclos",
+                    "modus": "top_easy",
+                    "title": "Michael Jackson",
+                    "timestamp_start": "2026-07-22T23:00:36+02:00",
+                    "duration_seconds": 219,
+                    "tries": 13,
+                    "wrong_answers": 1,
+                    "help_needed": 2
+                },
+                "top_medium": {
+                    "user_name": "Duclos",
+                    "modus": "top_medium",
+                    "title": "The Godfather",
+                    "timestamp_start": "2026-07-22T23:02:38+02:00",
+                    "duration_seconds": 110,
+                    "tries": 13,
+                    "wrong_answers": 2,
+                    "help_needed": 4
+                },
+                "top_hard": {
+                    "user_name": "Duclos",
+                    "modus": "top_hard",
+                    "title": "The Godfather",
+                    "timestamp_start": "2026-07-22T23:01:44+02:00",
+                    "duration_seconds": 164,
+                    "tries": 20,
+                    "wrong_answers": 3,
+                    "help_needed": 5
+                }
+            }
+        },
+        "ironman": {
+            "least_attempts": {
+                "full_random": null,
+                "category": {
+                    "user_name": "Duclos",
+                    "modus": "category",
+                    "title": "The Godfather",
+                    "timestamp_start": "2026-07-22T22:58:22+02:00",
+                    "duration_seconds": 353,
+                    "tries": 13,
+                    "wrong_answers": 3,
+                    "help_needed": 0
+                },
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": {
+                    "user_name": "Duclos",
+                    "modus": "top_hard",
+                    "title": "European hedgehog",
+                    "timestamp_start": "2026-07-22T23:00:55+02:00",
+                    "duration_seconds": 200,
+                    "tries": 19,
+                    "wrong_answers": 2,
+                    "help_needed": 0
+                }
+            },
+            "fastest": {
+                "full_random": null,
+                "category": {
+                    "user_name": "Duclos",
+                    "modus": "category",
+                    "title": "The Godfather",
+                    "timestamp_start": "2026-07-22T22:58:22+02:00",
+                    "duration_seconds": 353,
+                    "tries": 13,
+                    "wrong_answers": 3,
+                    "help_needed": 0
+                },
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": {
+                    "user_name": "Duclos",
+                    "modus": "top_hard",
+                    "title": "European hedgehog",
+                    "timestamp_start": "2026-07-22T23:00:55+02:00",
+                    "duration_seconds": 200,
+                    "tries": 19,
+                    "wrong_answers": 2,
+                    "help_needed": 0
+                }
+            }
+        }
+    },
+    "runs": {
+        "full_random": [
+            {
+                "user_name": "Duclos",
+                "modus": "full_random",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T22:55:28+02:00",
+                "duration_seconds": 527,
+                "tries": 17,
+                "wrong_answers": 3,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "full_random",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-22T22:57:41+02:00",
+                "duration_seconds": 407,
+                "tries": 16,
+                "wrong_answers": 5,
+                "help_needed": 4
+            }
+        ],
+        "category": [
+            {
+                "user_name": "Duclos",
+                "modus": "category",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T22:55:53+02:00",
+                "duration_seconds": 502,
+                "tries": 10,
+                "wrong_answers": 2,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "category",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T22:58:22+02:00",
+                "duration_seconds": 353,
+                "tries": 13,
+                "wrong_answers": 3,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "category",
+                "title": "Albert Einstein",
+                "timestamp_start": "2026-07-22T22:55:56+02:00",
+                "duration_seconds": 499,
+                "tries": 12,
+                "wrong_answers": 2,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "category",
+                "title": "World War II",
+                "timestamp_start": "2026-07-22T22:56:35+02:00",
+                "duration_seconds": 460,
+                "tries": 15,
+                "wrong_answers": 2,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "category",
+                "title": "Lion",
+                "timestamp_start": "2026-07-22T22:59:15+02:00",
+                "duration_seconds": 300,
+                "tries": 8,
+                "wrong_answers": 4,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "category",
+                "title": "Michael Jackson",
+                "timestamp_start": "2026-07-22T22:58:32+02:00",
+                "duration_seconds": 356,
+                "tries": 11,
+                "wrong_answers": 0,
+                "help_needed": 1
+            }
+        ],
+        "top_easy": [
+            {
+                "user_name": "Duclos",
+                "modus": "top_easy",
+                "title": "Michael Jackson",
+                "timestamp_start": "2026-07-22T23:00:36+02:00",
+                "duration_seconds": 219,
+                "tries": 13,
+                "wrong_answers": 1,
+                "help_needed": 2
+            }
+        ],
+        "top_medium": [
+            {
+                "user_name": "Duclos",
+                "modus": "top_medium",
+                "title": "World War II",
+                "timestamp_start": "2026-07-22T22:58:16+02:00",
+                "duration_seconds": 359,
+                "tries": 5,
+                "wrong_answers": 1,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_medium",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-22T23:00:24+02:00",
+                "duration_seconds": 244,
+                "tries": 17,
+                "wrong_answers": 3,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_medium",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:56:45+02:00",
+                "duration_seconds": 463,
+                "tries": 18,
+                "wrong_answers": 3,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_medium",
+                "title": "Lion",
+                "timestamp_start": "2026-07-22T22:55:55+02:00",
+                "duration_seconds": 513,
+                "tries": 9,
+                "wrong_answers": 1,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_medium",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T23:02:38+02:00",
+                "duration_seconds": 110,
+                "tries": 13,
+                "wrong_answers": 2,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_medium",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T23:00:02+02:00",
+                "duration_seconds": 266,
+                "tries": 13,
+                "wrong_answers": 3,
+                "help_needed": 4
+            }
+        ],
+        "top_hard": [
+            {
+                "user_name": "Duclos",
+                "modus": "top_hard",
+                "title": "European hedgehog",
+                "timestamp_start": "2026-07-22T23:00:55+02:00",
+                "duration_seconds": 200,
+                "tries": 19,
+                "wrong_answers": 2,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_hard",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:57:44+02:00",
+                "duration_seconds": 391,
+                "tries": 11,
+                "wrong_answers": 5,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_hard",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T23:00:58+02:00",
+                "duration_seconds": 210,
+                "tries": 13,
+                "wrong_answers": 4,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_hard",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T23:01:44+02:00",
+                "duration_seconds": 164,
+                "tries": 20,
+                "wrong_answers": 3,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Duclos",
+                "modus": "top_hard",
+                "title": "Lion",
+                "timestamp_start": "2026-07-22T23:00:13+02:00",
+                "duration_seconds": 255,
+                "tries": 8,
+                "wrong_answers": 2,
+                "help_needed": 4
+            }
+        ]
+    }
+}

@@ -1,0 +1,396 @@
+{
+    "player": "Vincent",
+    "created_at": "2026-07-22T23:04:15+02:00",
+    "last_updated": "2026-07-22T23:04:28+02:00",
+    "total_runs": 20,
+    "personal_records": {
+        "normal": {
+            "least_attempts": {
+                "full_random": {
+                    "user_name": "Vincent",
+                    "modus": "full_random",
+                    "title": "Theodore Roosevelt",
+                    "timestamp_start": "2026-07-22T23:00:59+02:00",
+                    "duration_seconds": 196,
+                    "tries": 7,
+                    "wrong_answers": 5,
+                    "help_needed": 4
+                },
+                "category": {
+                    "user_name": "Vincent",
+                    "modus": "category",
+                    "title": "World War II",
+                    "timestamp_start": "2026-07-22T23:01:50+02:00",
+                    "duration_seconds": 145,
+                    "tries": 10,
+                    "wrong_answers": 4,
+                    "help_needed": 2
+                },
+                "top_easy": {
+                    "user_name": "Vincent",
+                    "modus": "top_easy",
+                    "title": "Cristiano Ronaldo",
+                    "timestamp_start": "2026-07-22T22:57:35+02:00",
+                    "duration_seconds": 413,
+                    "tries": 7,
+                    "wrong_answers": 0,
+                    "help_needed": 4
+                },
+                "top_medium": {
+                    "user_name": "Vincent",
+                    "modus": "top_medium",
+                    "title": "European hedgehog",
+                    "timestamp_start": "2026-07-22T22:59:25+02:00",
+                    "duration_seconds": 303,
+                    "tries": 11,
+                    "wrong_answers": 1,
+                    "help_needed": 1
+                },
+                "top_hard": {
+                    "user_name": "Vincent",
+                    "modus": "top_hard",
+                    "title": "Michael Jackson",
+                    "timestamp_start": "2026-07-22T22:57:56+02:00",
+                    "duration_seconds": 379,
+                    "tries": 15,
+                    "wrong_answers": 1,
+                    "help_needed": 5
+                }
+            },
+            "fastest": {
+                "full_random": {
+                    "user_name": "Vincent",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-22T23:02:23+02:00",
+                    "duration_seconds": 125,
+                    "tries": 12,
+                    "wrong_answers": 2,
+                    "help_needed": 5
+                },
+                "category": {
+                    "user_name": "Vincent",
+                    "modus": "category",
+                    "title": "World War II",
+                    "timestamp_start": "2026-07-22T23:01:50+02:00",
+                    "duration_seconds": 145,
+                    "tries": 10,
+                    "wrong_answers": 4,
+                    "help_needed": 2
+                },
+                "top_easy": {
+                    "user_name": "Vincent",
+                    "modus": "top_easy",
+                    "title": "World War II",
+                    "timestamp_start": "2026-07-22T23:01:58+02:00",
+                    "duration_seconds": 137,
+                    "tries": 15,
+                    "wrong_answers": 3,
+                    "help_needed": 3
+                },
+                "top_medium": {
+                    "user_name": "Vincent",
+                    "modus": "top_medium",
+                    "title": "European hedgehog",
+                    "timestamp_start": "2026-07-22T22:59:25+02:00",
+                    "duration_seconds": 303,
+                    "tries": 11,
+                    "wrong_answers": 1,
+                    "help_needed": 1
+                },
+                "top_hard": {
+                    "user_name": "Vincent",
+                    "modus": "top_hard",
+                    "title": "Michael Jackson",
+                    "timestamp_start": "2026-07-22T22:57:56+02:00",
+                    "duration_seconds": 379,
+                    "tries": 15,
+                    "wrong_answers": 1,
+                    "help_needed": 5
+                }
+            }
+        },
+        "ironman": {
+            "least_attempts": {
+                "full_random": {
+                    "user_name": "Vincent",
+                    "modus": "full_random",
+                    "title": "Theodore Roosevelt",
+                    "timestamp_start": "2026-07-22T22:55:07+02:00",
+                    "duration_seconds": 548,
+                    "tries": 17,
+                    "wrong_answers": 0,
+                    "help_needed": 0
+                },
+                "category": {
+                    "user_name": "Vincent",
+                    "modus": "category",
+                    "title": "Cristiano Ronaldo",
+                    "timestamp_start": "2026-07-22T23:01:32+02:00",
+                    "duration_seconds": 163,
+                    "tries": 13,
+                    "wrong_answers": 1,
+                    "help_needed": 0
+                },
+                "top_easy": {
+                    "user_name": "Vincent",
+                    "modus": "top_easy",
+                    "title": "Berlin",
+                    "timestamp_start": "2026-07-22T22:57:57+02:00",
+                    "duration_seconds": 391,
+                    "tries": 14,
+                    "wrong_answers": 2,
+                    "help_needed": 0
+                },
+                "top_medium": null,
+                "top_hard": null
+            },
+            "fastest": {
+                "full_random": {
+                    "user_name": "Vincent",
+                    "modus": "full_random",
+                    "title": "Theodore Roosevelt",
+                    "timestamp_start": "2026-07-22T22:55:07+02:00",
+                    "duration_seconds": 548,
+                    "tries": 17,
+                    "wrong_answers": 0,
+                    "help_needed": 0
+                },
+                "category": {
+                    "user_name": "Vincent",
+                    "modus": "category",
+                    "title": "Cristiano Ronaldo",
+                    "timestamp_start": "2026-07-22T23:01:32+02:00",
+                    "duration_seconds": 163,
+                    "tries": 13,
+                    "wrong_answers": 1,
+                    "help_needed": 0
+                },
+                "top_easy": {
+                    "user_name": "Vincent",
+                    "modus": "top_easy",
+                    "title": "Berlin",
+                    "timestamp_start": "2026-07-22T22:57:57+02:00",
+                    "duration_seconds": 391,
+                    "tries": 14,
+                    "wrong_answers": 2,
+                    "help_needed": 0
+                },
+                "top_medium": null,
+                "top_hard": null
+            }
+        }
+    },
+    "runs": {
+        "full_random": [
+            {
+                "user_name": "Vincent",
+                "modus": "full_random",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:55:07+02:00",
+                "duration_seconds": 548,
+                "tries": 17,
+                "wrong_answers": 0,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "full_random",
+                "title": "Cristiano Ronaldo",
+                "timestamp_start": "2026-07-22T23:00:09+02:00",
+                "duration_seconds": 246,
+                "tries": 8,
+                "wrong_answers": 3,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "full_random",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T23:00:59+02:00",
+                "duration_seconds": 196,
+                "tries": 7,
+                "wrong_answers": 5,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "full_random",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:55:05+02:00",
+                "duration_seconds": 563,
+                "tries": 17,
+                "wrong_answers": 4,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "full_random",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-22T23:02:23+02:00",
+                "duration_seconds": 125,
+                "tries": 12,
+                "wrong_answers": 2,
+                "help_needed": 5
+            }
+        ],
+        "category": [
+            {
+                "user_name": "Vincent",
+                "modus": "category",
+                "title": "World War II",
+                "timestamp_start": "2026-07-22T23:01:50+02:00",
+                "duration_seconds": 145,
+                "tries": 10,
+                "wrong_answers": 4,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "category",
+                "title": "Albert Einstein",
+                "timestamp_start": "2026-07-22T22:54:44+02:00",
+                "duration_seconds": 571,
+                "tries": 19,
+                "wrong_answers": 3,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "category",
+                "title": "Cristiano Ronaldo",
+                "timestamp_start": "2026-07-22T23:01:32+02:00",
+                "duration_seconds": 163,
+                "tries": 13,
+                "wrong_answers": 1,
+                "help_needed": 0
+            }
+        ],
+        "top_easy": [
+            {
+                "user_name": "Vincent",
+                "modus": "top_easy",
+                "title": "World War II",
+                "timestamp_start": "2026-07-22T23:01:58+02:00",
+                "duration_seconds": 137,
+                "tries": 15,
+                "wrong_answers": 3,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_easy",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T22:58:48+02:00",
+                "duration_seconds": 327,
+                "tries": 14,
+                "wrong_answers": 4,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_easy",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-22T22:57:57+02:00",
+                "duration_seconds": 391,
+                "tries": 14,
+                "wrong_answers": 2,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_easy",
+                "title": "Cristiano Ronaldo",
+                "timestamp_start": "2026-07-22T22:57:35+02:00",
+                "duration_seconds": 413,
+                "tries": 7,
+                "wrong_answers": 0,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_easy",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T23:01:47+02:00",
+                "duration_seconds": 161,
+                "tries": 18,
+                "wrong_answers": 5,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_easy",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:54:29+02:00",
+                "duration_seconds": 599,
+                "tries": 14,
+                "wrong_answers": 2,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_easy",
+                "title": "Lion",
+                "timestamp_start": "2026-07-22T23:01:24+02:00",
+                "duration_seconds": 184,
+                "tries": 14,
+                "wrong_answers": 2,
+                "help_needed": 5
+            }
+        ],
+        "top_medium": [
+            {
+                "user_name": "Vincent",
+                "modus": "top_medium",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-22T22:58:16+02:00",
+                "duration_seconds": 359,
+                "tries": 19,
+                "wrong_answers": 5,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_medium",
+                "title": "European hedgehog",
+                "timestamp_start": "2026-07-22T22:59:25+02:00",
+                "duration_seconds": 303,
+                "tries": 11,
+                "wrong_answers": 1,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_medium",
+                "title": "Cristiano Ronaldo",
+                "timestamp_start": "2026-07-22T22:57:42+02:00",
+                "duration_seconds": 406,
+                "tries": 11,
+                "wrong_answers": 3,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Vincent",
+                "modus": "top_medium",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-22T22:59:14+02:00",
+                "duration_seconds": 314,
+                "tries": 15,
+                "wrong_answers": 0,
+                "help_needed": 2
+            }
+        ],
+        "top_hard": [
+            {
+                "user_name": "Vincent",
+                "modus": "top_hard",
+                "title": "Michael Jackson",
+                "timestamp_start": "2026-07-22T22:57:56+02:00",
+                "duration_seconds": 379,
+                "tries": 15,
+                "wrong_answers": 1,
+                "help_needed": 5
+            }
+        ]
+    }
+}

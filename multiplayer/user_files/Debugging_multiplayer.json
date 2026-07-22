@@ -1,0 +1,310 @@
+{
+    "player": "Debugging",
+    "created_at": "2026-07-22T23:06:16+02:00",
+    "last_updated": "2026-07-23T00:55:19+02:00",
+    "total_runs": 15,
+    "personal_records": {
+        "normal": {
+            "least_attempts": {
+                "full_random": {
+                    "user_name": "Debugging",
+                    "modus": "full_random",
+                    "title": "European hedgehog",
+                    "timestamp_start": "2026-07-23T00:34:21+02:00",
+                    "duration_seconds": 252,
+                    "tries": 10,
+                    "wrong_answers": 0,
+                    "help_needed": 3
+                },
+                "category": {
+                    "user_name": "Debugging",
+                    "modus": "category",
+                    "title": "World War II",
+                    "timestamp_start": "2026-07-23T00:47:48+02:00",
+                    "duration_seconds": 76,
+                    "tries": 14,
+                    "wrong_answers": 4,
+                    "help_needed": 5
+                },
+                "top_easy": {
+                    "user_name": "Debugging",
+                    "modus": "top_easy",
+                    "title": "Albert Einstein",
+                    "timestamp_start": "2026-07-23T00:49:44+02:00",
+                    "duration_seconds": 160,
+                    "tries": 13,
+                    "wrong_answers": 2,
+                    "help_needed": 1
+                },
+                "top_medium": {
+                    "user_name": "Debugging",
+                    "modus": "top_medium",
+                    "title": "Albert Einstein",
+                    "timestamp_start": "2026-07-23T00:45:48+02:00",
+                    "duration_seconds": 240,
+                    "tries": 14,
+                    "wrong_answers": 5,
+                    "help_needed": 1
+                },
+                "top_hard": {
+                    "user_name": "Debugging",
+                    "modus": "top_hard",
+                    "title": "Berlin",
+                    "timestamp_start": "2026-07-23T00:52:53+02:00",
+                    "duration_seconds": 99,
+                    "tries": 5,
+                    "wrong_answers": 1,
+                    "help_needed": 4
+                }
+            },
+            "fastest": {
+                "full_random": {
+                    "user_name": "Debugging",
+                    "modus": "full_random",
+                    "title": "Orangutan",
+                    "timestamp_start": "2026-07-23T00:39:12+02:00",
+                    "duration_seconds": 107,
+                    "tries": 16,
+                    "wrong_answers": 5,
+                    "help_needed": 2
+                },
+                "category": {
+                    "user_name": "Debugging",
+                    "modus": "category",
+                    "title": "World War II",
+                    "timestamp_start": "2026-07-23T00:47:48+02:00",
+                    "duration_seconds": 76,
+                    "tries": 14,
+                    "wrong_answers": 4,
+                    "help_needed": 5
+                },
+                "top_easy": {
+                    "user_name": "Debugging",
+                    "modus": "top_easy",
+                    "title": "Albert Einstein",
+                    "timestamp_start": "2026-07-23T00:49:44+02:00",
+                    "duration_seconds": 160,
+                    "tries": 13,
+                    "wrong_answers": 2,
+                    "help_needed": 1
+                },
+                "top_medium": {
+                    "user_name": "Debugging",
+                    "modus": "top_medium",
+                    "title": "Albert Einstein",
+                    "timestamp_start": "2026-07-23T00:45:48+02:00",
+                    "duration_seconds": 240,
+                    "tries": 14,
+                    "wrong_answers": 5,
+                    "help_needed": 1
+                },
+                "top_hard": {
+                    "user_name": "Debugging",
+                    "modus": "top_hard",
+                    "title": "Berlin",
+                    "timestamp_start": "2026-07-23T00:52:53+02:00",
+                    "duration_seconds": 99,
+                    "tries": 5,
+                    "wrong_answers": 1,
+                    "help_needed": 4
+                }
+            }
+        },
+        "ironman": {
+            "least_attempts": {
+                "full_random": {
+                    "user_name": "Debugging",
+                    "modus": "full_random",
+                    "title": "European hedgehog",
+                    "timestamp_start": "2026-07-23T00:32:38+02:00",
+                    "duration_seconds": 404,
+                    "tries": 19,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "category": null,
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": null
+            },
+            "fastest": {
+                "full_random": {
+                    "user_name": "Debugging",
+                    "modus": "full_random",
+                    "title": "European hedgehog",
+                    "timestamp_start": "2026-07-23T00:32:38+02:00",
+                    "duration_seconds": 404,
+                    "tries": 19,
+                    "wrong_answers": 5,
+                    "help_needed": 0
+                },
+                "category": null,
+                "top_easy": null,
+                "top_medium": null,
+                "top_hard": null
+            }
+        }
+    },
+    "runs": {
+        "full_random": [
+            {
+                "user_name": "Debugging",
+                "modus": "full_random",
+                "title": "The Godfather",
+                "timestamp_start": "2026-07-22T23:03:41+02:00",
+                "duration_seconds": 155,
+                "tries": 11,
+                "wrong_answers": 0,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "full_random",
+                "title": "European hedgehog",
+                "timestamp_start": "2026-07-23T00:34:21+02:00",
+                "duration_seconds": 252,
+                "tries": 10,
+                "wrong_answers": 0,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "full_random",
+                "title": "European hedgehog",
+                "timestamp_start": "2026-07-23T00:32:38+02:00",
+                "duration_seconds": 404,
+                "tries": 19,
+                "wrong_answers": 5,
+                "help_needed": 0
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "full_random",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-23T00:39:12+02:00",
+                "duration_seconds": 107,
+                "tries": 16,
+                "wrong_answers": 5,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "full_random",
+                "title": "World War II",
+                "timestamp_start": "2026-07-23T00:38:23+02:00",
+                "duration_seconds": 186,
+                "tries": 11,
+                "wrong_answers": 2,
+                "help_needed": 4
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "full_random",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-23T00:45:20+02:00",
+                "duration_seconds": 551,
+                "tries": 14,
+                "wrong_answers": 3,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "full_random",
+                "title": "Lion",
+                "timestamp_start": "2026-07-23T00:49:27+02:00",
+                "duration_seconds": 352,
+                "tries": 11,
+                "wrong_answers": 0,
+                "help_needed": 2
+            }
+        ],
+        "category": [
+            {
+                "user_name": "Debugging",
+                "modus": "category",
+                "title": "World War II",
+                "timestamp_start": "2026-07-23T00:47:48+02:00",
+                "duration_seconds": 76,
+                "tries": 14,
+                "wrong_answers": 4,
+                "help_needed": 5
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "category",
+                "title": "Orangutan",
+                "timestamp_start": "2026-07-23T00:44:41+02:00",
+                "duration_seconds": 427,
+                "tries": 18,
+                "wrong_answers": 2,
+                "help_needed": 4
+            }
+        ],
+        "top_easy": [
+            {
+                "user_name": "Debugging",
+                "modus": "top_easy",
+                "title": "Albert Einstein",
+                "timestamp_start": "2026-07-23T00:49:44+02:00",
+                "duration_seconds": 160,
+                "tries": 13,
+                "wrong_answers": 2,
+                "help_needed": 1
+            }
+        ],
+        "top_medium": [
+            {
+                "user_name": "Debugging",
+                "modus": "top_medium",
+                "title": "World War II",
+                "timestamp_start": "2026-07-22T23:05:06+02:00",
+                "duration_seconds": 409,
+                "tries": 16,
+                "wrong_answers": 0,
+                "help_needed": 3
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "top_medium",
+                "title": "Albert Einstein",
+                "timestamp_start": "2026-07-23T00:45:48+02:00",
+                "duration_seconds": 240,
+                "tries": 14,
+                "wrong_answers": 5,
+                "help_needed": 1
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "top_medium",
+                "title": "Theodore Roosevelt",
+                "timestamp_start": "2026-07-23T00:46:19+02:00",
+                "duration_seconds": 491,
+                "tries": 15,
+                "wrong_answers": 3,
+                "help_needed": 4
+            }
+        ],
+        "top_hard": [
+            {
+                "user_name": "Debugging",
+                "modus": "top_hard",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-23T00:30:33+02:00",
+                "duration_seconds": 550,
+                "tries": 16,
+                "wrong_answers": 5,
+                "help_needed": 2
+            },
+            {
+                "user_name": "Debugging",
+                "modus": "top_hard",
+                "title": "Berlin",
+                "timestamp_start": "2026-07-23T00:52:53+02:00",
+                "duration_seconds": 99,
+                "tries": 5,
+                "wrong_answers": 1,
+                "help_needed": 4
+            }
+        ]
+    }
+}
