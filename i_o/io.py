@@ -1,6 +1,7 @@
 """All things input-output related."""
 
-from base_app.config import MENU_ITEMS
+from base_app.config import MENU_ITEMS, Spielregeln
+from i_o.colorfull_output import output_rainbow_text
 from wiki_calls import category_lists
 from wiki_calls.category_lists import categories
 from wiki_calls.config import DIFFICULTIES_TOP
@@ -64,8 +65,10 @@ def get_menu_selection() -> int | None:
 
     return int(selection)
 
+
 # TODO: die drei hier sind dreckig. menu, category and difficulty
 # selectino sollten eine abstraktion sein
+
 
 def get_category_selection() -> str:
     """Print the available categories, asks for input.
@@ -182,3 +185,7 @@ def menu_selection_in_range(
         return False
     else:
         return min_range <= int(selection) <= max_range
+
+
+def output_howto() -> None:
+    output_rainbow_text(Spielregeln)
