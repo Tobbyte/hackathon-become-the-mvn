@@ -32,6 +32,7 @@ from i_o.io import (
     get_menu_selection,
     get_user_input,
     output,
+    output_howto,
 )
 from splash.splash_screen import show_splashscreen
 from wiki_calls.wiki import get_random_wikipedia_article_data
@@ -40,7 +41,6 @@ from wiki_calls.wiki import get_random_wikipedia_article_data
 def run_game() -> None:
     clear_screen()
     """Start the game."""
-    print("dev: running")
     show_splashscreen()
 
     first_run = True
@@ -51,7 +51,6 @@ def run_game() -> None:
         first_run = False
 
         selection = get_menu_selection()
-
         if not selection:
             _quit_program()
 
@@ -59,8 +58,9 @@ def run_game() -> None:
             clear_screen()
             output(
                 f"~~~~~~~~~~\nSelected menu item: "
-                f"{MENU_ITEMS[selection]}\n"
+                f"{MENU_ITEMS[selection - 1][0]}\n"
                 "~~~~~~~~~~\n",
+                rainbow=True,
             )
 
             wiki_content = get_dispatch_menu()[selection]()
@@ -90,11 +90,17 @@ def _idle_after_input() -> None:
 
 def get_dispatch_menu() -> dict:
     return {
-        1: play_with_random_category,
-        2: play_with_category,
-        3: play_by_difficulty,
+        1: show_howto,
+        2: play_with_random_category,
+        3: play_with_category,
+        4: play_by_difficulty,
         0: _quit_program,
     }
+
+
+def show_howto():
+    output_howto()
+    _idle_after_input()
 
 
 def play_with_random_category():
@@ -103,7 +109,10 @@ def play_with_random_category():
 
 def play_with_category():
     choosen_topic = get_category_selection()
-    print(f"dev: user choose {choosen_topic}")
+    output(
+        f"\n~~~~~~~~~~\nSelected category: {choosen_topic}\n~~~~~~~~~~\n",
+        rainbow=True,
+    )
     if choosen_topic is not None:
         return get_random_wikipedia_article_data(choosen_topic)
     return None
@@ -111,8 +120,13 @@ def play_with_category():
 
 def play_by_difficulty():
     choosen_difficulty = get_difficulty_selection()
-    print(f"dev: user choose {choosen_difficulty}")
     if choosen_difficulty is not None:
+        output(
+            f"\n~~~~~~~~~~\nSelected difficulty: "
+            f"{choosen_difficulty}\n"
+            "~~~~~~~~~~\n",
+            rainbow=True,
+        )
         return get_random_wikipedia_article_data(
             user_difficulty=choosen_difficulty,
         )
