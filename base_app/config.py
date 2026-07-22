@@ -57,7 +57,8 @@ Ein Artikel aus einer Liste der 1000 meistgesuchten Seitenaufrufe.
 
 2. Spielablauf
 
-Nach der Auswahl wir ein automatisch generierter Textausschnitt (ca. 40-80 Wörter) des gesuchten Wikipedia-Artikels angezeigt.
+Nach der Auswahl wir ein automatisch generierter Textausschnitt (ca. 40-80 Wörter)
+des gesuchten Wikipedia-Artikels angezeigt.
 
 Ziel des Spiel ist es, den genauen Artikels zu erraten.
 
@@ -66,19 +67,32 @@ Ausschlussverfahren & Lebenspunkte
 
 Der Spieler startet mit 10 Leben (Versuchen).
 
-Der Spieler tastet sich mithilfe von bin ich ...Fragen heran, die vom System ausschließlich mit      Ja, Nein, Warm, Kalt beantwortet werden.
+Der Spieler tastet sich mithilfe von bin ich ...Fragen heran, 
+die vom System ausschließlich mit Ja, Nein, Warm, Kalt beantwortet werden.
 
 Ja-Antworten: Der Versuch war erfolgreich. Die Anzahl der verbleibenden Leben bleibt unverändert.
 
 Nein-Antwort: Die Vermutung war falsch. Dem Spieler wird 1 Leben abgezogen.
 
+Sehr Warm: Dem Spieler wird kein Leben abgezogen.
+
+Warm: Dem Spieler wird kein Leben Abgezogen.
+
+Kalt: Der Spieler verliert ein Leben.
+
 4. Die Hilfestellung
 
 Der Spieler kann jederzeit während des Spiels einen zusätzlichen Hinweis (Hilfe) anfordern.
 
-Das Nutzen der Hilfe kostet den Spieler sofort 1 Leben, hat der Spieler nur noch 1 Leben ist die Nutzung der Hilfestellung nicht mehr möglich.
+Das Nutzen der Hilfe kostet den Spieler sofort 1 Leben, 
+hat der Spieler nur noch 1 Leben ist die Nutzung der Hilfestellung nicht mehr möglich.
 
 5. Spielende
 
-Das Spiel endet, wenn der Spieler den korrekten Titel errät (Sieg) oder die Anzahl der Leben auf 0 sinkt (Niederlage).
+Das Spiel endet, wenn der Spieler den korrekten Titel errät (Sieg), die Anzahl der Leben auf 0 sinkt (Niederlage)
+oder er sich durch Eingabe "exit" entscheidet zurück ins Haptmenü zu gelangen.
+
+6.Navigerung
+Auswahl über Eingabe der Nummern oder den entsprechenden Befehl,
+ bestätigung durch Enter.
 """
