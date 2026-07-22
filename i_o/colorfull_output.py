@@ -36,4 +36,4 @@ def output_rainbow_text(message: str):
 
         formatted_text.append("\n")
 
-    console.print(formatted_text[:-2])
+    console.print(formatted_text)
