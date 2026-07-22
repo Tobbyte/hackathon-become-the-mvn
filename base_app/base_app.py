@@ -60,7 +60,6 @@ def run_game() -> None:
         first_run = False
 
         selection = get_menu_selection()
-
         if not selection:
             _quit_program()
 
@@ -68,7 +67,7 @@ def run_game() -> None:
             clear_screen()
             output(
                 f"~~~~~~~~~~\nSelected menu item: "
-                f"{MENU_ITEMS[selection]}\n"
+                f"{MENU_ITEMS[selection - 1][0]}\n"
                 "~~~~~~~~~~\n",
             )
 
@@ -118,7 +117,9 @@ def play_with_random_category():
 
 def play_with_category():
     choosen_topic = get_category_selection()
-    print(f"dev: user choose {choosen_topic}")
+    output(
+        f"\n~~~~~~~~~~\nSelected category: {choosen_topic}\n~~~~~~~~~~\n",
+    )
     if choosen_topic is not None:
         return get_random_wikipedia_article_data(choosen_topic)
     return None
@@ -126,8 +127,12 @@ def play_with_category():
 
 def play_by_difficulty():
     choosen_difficulty = get_difficulty_selection()
-    print(f"dev: user choose {choosen_difficulty}")
     if choosen_difficulty is not None:
+        output(
+            f"\n~~~~~~~~~~\nSelected difficulty: "
+            f"{choosen_difficulty}\n"
+            "~~~~~~~~~~\n",
+        )
         return get_random_wikipedia_article_data(
             user_difficulty=choosen_difficulty,
         )
@@ -149,7 +154,10 @@ def _interact_with_user(wiki_article: dict) -> None:
         if user_input.lower() == "help":
             game_statistics["number_of_hints"] += 1
             hint_response, last_id = ask_llm(
-                persona, wiki_summary, HINT_QUESTION, last_id
+                persona,
+                wiki_summary,
+                HINT_QUESTION,
+                last_id,
             )
             print(f"Hint response: \n{hint_response}\n")
         elif user_input == "exit":

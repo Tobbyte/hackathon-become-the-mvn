@@ -31,7 +31,7 @@ def clear_screen() -> None:
     print("\n\n\n\n")  ## spacer
 
 
-def get_menu_selection_multi(menu: tuple[str, list[list]]) -> str | None:
+def get_menu_selection_multi(menu: tuple[str, list[list]]) -> list | None:
     """Print the available categories, asks for input.
 
     see wiki_calls.category_list
@@ -65,13 +65,14 @@ def get_menu_selection_multi(menu: tuple[str, list[list]]) -> str | None:
             insist_to_quit = True
         else:
             break
-    return menu_items[int(selection) - 1][0]
+
+    return menu_items[int(selection) - 1]
 
 
 def get_menu_selection() -> int | None:
     sel = get_menu_selection_multi(("Hauptmenü", MENU_ITEMS))
     if sel is not None:
-        return int(sel)
+        return int(sel[1])
     return None
     # return int(selection)
 
@@ -79,7 +80,7 @@ def get_menu_selection() -> int | None:
 def get_category_selection() -> str | None:
     sel = get_menu_selection_multi(("Kategorien", categories))
     if sel is not None:
-        return sel
+        return sel[0]
     return None
     # return categories[int(selection) - 1][0]
 
@@ -87,7 +88,7 @@ def get_category_selection() -> str | None:
 def get_difficulty_selection() -> str | None:
     sel = get_menu_selection_multi(("Schwierigkeit", DIFFICULTIES_TOP))
     if sel is not None:
-        return sel
+        return sel[0]
     return None
     # return DIFFICULTIES_TOP[int(selection) - 1][0]
 
