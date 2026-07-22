@@ -1,6 +1,6 @@
 """All things input-output related."""
 
-from base_app.config import MENU_ITEMS
+from base_app.config import MENU_ITEMS, Spielregeln
 from wiki_calls import category_lists
 from wiki_calls.category_lists import categories
 from wiki_calls.config import DIFFICULTIES_TOP
@@ -182,3 +182,7 @@ def menu_selection_in_range(
         return False
     else:
         return min_range <= int(selection) <= max_range
+
+
+def output_howto() -> None:
+    output(Spielregeln)

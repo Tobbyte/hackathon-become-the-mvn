@@ -1,8 +1,9 @@
 MENU_ITEMS = [
+    "1.  howto",
+    "2.  random",
+    "3.  by category",
+    "4.  by difficulty",
     "0.  Exit",
-    "1.  random",
-    "2.  by category",
-    "3.  by difficulty",
 ]
 #---Spieltexte und Menüpunkte---
 
