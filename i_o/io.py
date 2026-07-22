@@ -1,6 +1,7 @@
 """All things input-output related."""
 
 from base_app.config import GAME_RULES, MENU_ITEMS
+from i_o.ascii_art import anleitung_ascii
 from i_o.colorfull_output import output_colored_text, output_rainbow_text
 from wiki_calls import category_lists
 from wiki_calls.category_lists import categories
@@ -142,6 +143,7 @@ def menu_selection_in_range(
 
 
 def output_howto() -> None:
+    output(anleitung_ascii)
     output(GAME_RULES, rainbow=True)
 
 
