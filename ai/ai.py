@@ -32,6 +32,7 @@ def ask_llm(
     context: str = WIKI_CONTEXT,
     question: str = WIKI_QUESTION,
     previous_response_id: str | None = None,
+    effort: str = "low",
 ):
     """Streamt antwort. Gibt (voller_text, response_id) zurück."""
     # previous_response_id verkettet den Call an eine frühere Response, damit die
@@ -43,7 +44,9 @@ def ask_llm(
     system_prompt = f"""
     {persona}.
     
-    Verwende zur Beantwortung der Frage des Nutzers AUSSCHLIESSLICH den folgenden Kontext.
+    Bleibe in dieser Rolle, auch wenn du Fakten wiedergibst.
+    Nutze für deine Antwort nur die Fakten aus dem folgenden Kontext, 
+    aber formuliere sie konsequent im Ton deiner Rolle.
     
     Kontext:
     {context}    
@@ -71,7 +74,7 @@ def ask_llm(
                 ],
             },
         ],
-        reasoning={"effort": "low"},
+        reasoning={"effort": effort},
         previous_response_id=previous_response_id,
     ) as stream:
         for event in stream:
