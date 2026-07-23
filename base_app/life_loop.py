@@ -33,7 +33,7 @@ def interact_with_user(wiki_article: dict) -> dict:
     full_article = wiki_article["full_article"]
     persona, persona_description = generate_persona()
     output(PERSONA_TO_ASCII[persona], rainbow=True)
-    wiki_summary, last_id = ask_llm(persona, full_article)
+    wiki_summary, last_id = ask_llm(persona, full_article, effort="medium")
 
     while True:
         game_status(game_statistics)
