@@ -1,15 +1,11 @@
 import os
-
 # from zoneinfo import ZoneInfo
 import random
-from i_o.io import output
-from multiplayer import multiplayer_filehandler
-
+from . import multiplayer_filehandler
 # import subprocess
 from datetime import datetime
-
 from i_o.io import output
-from multiplayer import multiplayer_filehandler
+
 
 USER_FILES_FOLDER: str = os.path.join(
     os.path.dirname(__file__),
@@ -43,6 +39,7 @@ def _get_user_score_file(new_user: str) -> dict:
     player_scores["player"] = new_user
     player_scores["created_at"] = create_timestamp()
     player_scores["last_updated"] = create_timestamp()
+    player_scores["total_runs"] = 0
     player_scores["personal_records"] = {}
     player_scores["personal_records"]["normal"] = {}
     player_scores["personal_records"]["normal"]["least_attempts"] = {}
@@ -221,8 +218,6 @@ def get_existing_users() -> list[str]:
             users.append(user_name)
 
     users.sort()
-    if not users:
-        users = ["Dörte", "Pen15", "ers0r"]
     return users
 
 
@@ -246,7 +241,7 @@ PRETTY_STATS_KEYS = {
     "modus": "Spielmodus",
     "title": "Wikipedia-Artikel",
     "timestamp_start": "Startzeit",
-    "duration_seconds": "Endzeit",
+    "duration_seconds": "Dauer (s)",
     "tries": "Versuche",
     "wrong_answers": "Falsche Antworten",
     "help_needed": "Hilfe geholt",
@@ -254,32 +249,280 @@ PRETTY_STATS_KEYS = {
 PRETTY_MODI_KEYS = {
     "full_random": "zufällig",
     "category": "Nach Kategorie",
-    "top_easy": "Schwierigkeit einfach",
-    "top_medium": "Schwierigkeit mittel",
-    "top_hard": "Schwierigkeit schwer",
+    "top_easy": "Top 100 - Schwierigkeit einfach",
+    "top_medium": "Top 400 - Schwierigkeit mittel",
+    "top_hard": "Top 1000 - Schwierigkeit schwer",
 }
 
-def save_run(save_game: tuple[str, str, str, str, int, int, int], user_name: str):
+def save_run(
+    save_game: tuple[str, str, str, str, int, int, int],
+    user_name: str,
+) -> None:
     user_filename = os.path.join(
         USER_FILES_FOLDER,
         user_name + "_multiplayer.json",
     )
+
     user_file = multiplayer_filehandler.load_file(user_filename)
     run_profile = _create_run_profile(save_game, user_name)
+
     _print_current_run(run_profile)
     _add_run_to_file(user_file, run_profile)
+
+    user_file["total_runs"] += 1
+
     _update_personal_records(user_file, run_profile)
     _update_last_updated(user_file)
-    multiplayer_filehandler.save_file(user_filename, user_file)
 
+    multiplayer_filehandler.save_file(
+        user_filename,
+        user_file,
+    )
+
+    final_global_leaderboard = get_global_leaderboard()
+
+    handle_leaderboard_output(
+        final_global_leaderboard,
+        run_profile,
+    )
+
+
+def print_all_global_leaderboards() -> None:
+    fake_run_profile = {
+        "modus": "all",
+        "help_needed": 0,
+    }
+
+    final_global_leaderboard = get_global_leaderboard()
+
+    handle_leaderboard_output(
+        final_global_leaderboard,
+        fake_run_profile,
+    )
+
+
+def handle_leaderboard_output(
+    final_global_leaderboard: dict,
+    run_profile: dict,
+) -> None:
+    _print_current_run_leaderboards(
+        final_global_leaderboard,
+        run_profile,
+    )
+
+
+def _print_current_run_leaderboards(
+    final_global_leaderboard: dict,
+    run_profile: dict,
+) -> None:
+    if run_profile["modus"] == "all":
+        game_modes = _get_categories()
+
+    else:
+        game_modes = [
+            run_profile["modus"],
+        ]
+
+    record_versions = []
+
+    if run_profile["help_needed"] == 0:
+        record_versions.append("ironman")
+
+    record_versions.append("normal")
+
+    record_types = [
+        "fastest",
+        "least_attempts",
+    ]
+
+    output("")
+    output("Global Leaderboard:")
+
+    for record_version in record_versions:
+        for record_type in record_types:
+            for game_mode in game_modes:
+                leaderboard = final_global_leaderboard[
+                    record_version
+                ][record_type][game_mode]
+
+                _print_global_leaderboard(
+                    leaderboard,
+                    record_version,
+                    record_type,
+                    game_mode,
+                )
+
+
+def _print_global_leaderboard(
+    leaderboard: list[dict],
+    record_version: str,
+    record_type: str,
+    game_mode: str,
+) -> None:
+    output("")
+    output("")
+    output(f"### {record_version} ###")
+    output(f"## {record_type} ##")
+    output(f"# {game_mode} #")
+
+    for position, record in enumerate(
+        leaderboard[:5],
+        start=1,
+    ):
+        _print_global_leaderboard_entry(
+            position,
+            record,
+            record_type,
+        )
+
+
+def _print_global_leaderboard_entry(
+    position: int,
+    record: dict,
+    record_type: str,
+) -> None:
+    output("")
+    output(f"{position}. Platz")
+
+    output(
+        f'{record["user_name"]} "{record["title"]}"'
+    )
+
+    if record_type == "fastest":
+        output(
+            f"{record['duration_seconds']} Sekunden | "
+            f"{record['tries']} Versuche | "
+            f"{record['wrong_answers']} falsche Antworten"
+        )
+
+    elif record_type == "least_attempts":
+        output(
+            f"{record['tries']} Versuche | "
+            f"{record['duration_seconds']} Sekunden | "
+            f"{record['wrong_answers']} falsche Antworten"
+        )
+
+
+def _sort_global_leaderboards(
+    filled_global_leaderboard: dict,
+) -> dict:
+    for record_version in filled_global_leaderboard:
+        for record_type in filled_global_leaderboard[record_version]:
+            for game_mode in filled_global_leaderboard[
+                record_version
+            ][record_type]:
+                leaderboard = filled_global_leaderboard[
+                    record_version
+                ][record_type][game_mode]
+
+                if record_type == "least_attempts":
+                    leaderboard.sort(
+                        key=lambda record: record["tries"]
+                    )
+
+                elif record_type == "fastest":
+                    leaderboard.sort(
+                        key=lambda record: record[
+                            "duration_seconds"
+                        ]
+                    )
+
+    return filled_global_leaderboard
+
+
+def _fill_global_records(
+    global_leaderboards: dict,
+) -> dict:
+    users = get_existing_users()
+
+    for user_name in users:
+        user_filename = os.path.join(
+            USER_FILES_FOLDER,
+            user_name + "_multiplayer.json",
+        )
+
+        user_file = multiplayer_filehandler.load_file(
+            user_filename
+        )
+
+        for record_version in global_leaderboards:
+            for record_type in global_leaderboards[
+                record_version
+            ]:
+                for game_mode in global_leaderboards[
+                    record_version
+                ][record_type]:
+                    record = user_file[
+                        "personal_records"
+                    ][record_version][record_type][game_mode]
+
+                    if record is not None:
+                        global_leaderboards[
+                            record_version
+                        ][record_type][game_mode].append(
+                            record
+                        )
+
+    return global_leaderboards
+
+
+def _get_global_records_structure() -> dict:
+    record_versions = [
+        "normal",
+        "ironman",
+    ]
+
+    record_types = [
+        "least_attempts",
+        "fastest",
+    ]
+
+    game_modes = _get_categories()
+
+    global_leaderboards = {}
+
+    for record_version in record_versions:
+        global_leaderboards[record_version] = {}
+
+        for record_type in record_types:
+            global_leaderboards[
+                record_version
+            ][record_type] = {}
+
+            for game_mode in game_modes:
+                global_leaderboards[
+                    record_version
+                ][record_type][game_mode] = []
+
+    return global_leaderboards
+
+
+def get_global_leaderboard() -> dict:
+    global_leaderboards = (
+        _get_global_records_structure()
+    )
+
+    filled_global_leaderboard = (
+        _fill_global_records(
+            global_leaderboards
+        )
+    )
+
+    sorted_global_leaderboard = (
+        _sort_global_leaderboards(
+            filled_global_leaderboard
+        )
+    )
+
+    return sorted_global_leaderboard
 
 # For development only:
-def _random_run_generator() -> tuple[
+def _random_run_generator(user_name) -> tuple[
     tuple[str, str, str, str, int, int, int],
     str,
 ]:
     """Return randomly generated run data for the given user."""
-    user_name = "Vincent"
+
     game_modes = [
         "full_random",
         "category",
@@ -329,6 +572,18 @@ def _random_run_generator() -> tuple[
 
 
 if __name__ == "__main__":
-    init_user("Vincent")
-    save_game, user_name = _random_run_generator()
+    user_name = "Debugging"
+    init_user(user_name)
+    save_game, user_name = _random_run_generator(user_name)
     save_run(save_game, user_name)
+    print_all_global_leaderboards()
+
+
+    # users = ["Dani", "Toby", "Duclos", "Jan", "Vincent"]
+    #
+    # for user_name in users:
+    #     init_user(user_name)
+    #
+    #     for _ in range(10):
+    #         save_game, user_name = _random_run_generator(user_name)
+    #         save_run(save_game, user_name)
