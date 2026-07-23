@@ -94,7 +94,7 @@ def run_game() -> None:
                 #     f"\ndev: playing with wiki content:\n{wiki_content['header']}",
                 # )
                 print(
-                    "\ndev: get inital clou demo: ~this will take a while, wait~",
+                    "\n ### requesting llm. ~~this may take a while, wait~~",
                 )
 
                 game_statistics = interact_with_user(wiki_content)
